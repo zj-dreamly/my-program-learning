@@ -11,8 +11,21 @@
 
     <artifactId>design-pattern</artifactId>
     <version>${parent.version}</version>
+
     <packaging>jar</packaging>
     <name>design-pattern</name>
     <description>设计模式学习</description>
+
+    <properties>
+        <guava.version>27.1-jre</guava.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
