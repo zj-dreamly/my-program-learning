@@ -1,7 +1,4 @@
-# my-program-learning
-我的编程学习之路
-
-#文章索引
+# 文章索引
 ## java
 ### 设计模式
 #### [UML入门](https://github.com/zj-dreamly/my-program-learning/blob/master/java/design-pattern/doc/UML%E5%85%A5%E9%97%A8.md)
