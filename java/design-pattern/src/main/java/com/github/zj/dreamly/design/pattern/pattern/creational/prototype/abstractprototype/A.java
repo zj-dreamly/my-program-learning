@@ -1,7 +1,7 @@
 package com.github.zj.dreamly.design.pattern.pattern.creational.prototype.abstractprototype;
 
 /**
- * Created by geely
+ * @author 苍海之南
  */
 public abstract class A implements Cloneable{
     @Override
