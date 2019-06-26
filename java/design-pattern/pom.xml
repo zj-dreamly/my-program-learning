@@ -19,6 +19,7 @@
     <properties>
         <guava.version>27.1-jre</guava.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
+        <spring-jdbc.version>5.1.7.RELEASE</spring-jdbc.version>
     </properties>
 
     <dependencies>
@@ -32,6 +33,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring-jdbc.version}</version>
         </dependency>
     </dependencies>
 
