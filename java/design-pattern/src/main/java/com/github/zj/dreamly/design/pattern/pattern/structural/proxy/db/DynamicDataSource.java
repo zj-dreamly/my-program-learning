@@ -80,7 +80,7 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
 //    </bean>
 
 
-//	<bean id="dataSource" class="com.geely.design.pattern.structural.proxy.db.DynamicDataSource">
+//	<bean id="dataSource" class="com.github.zj.dreamly.design.pattern.pattern.structural.proxy.db.DynamicDataSource">
 //		<property name="targetDataSources">
 //			<map key-type="java.lang.String">
 //				<entry value-ref="db0" key="db0"></entry>
