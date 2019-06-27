@@ -17,6 +17,7 @@
 
     <modules>
         <module>design-pattern</module>
+        <module>spring-annotation</module>
     </modules>
 
 </project>
