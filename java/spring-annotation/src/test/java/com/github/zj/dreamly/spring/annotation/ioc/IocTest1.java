@@ -15,7 +15,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @since: 2019-06-27 17:18
  **/
 @Slf4j
-public class ConfigTest extends BaseTest {
+public class IocTest1 extends BaseTest {
 
 	@Test
 	public void test1() {
