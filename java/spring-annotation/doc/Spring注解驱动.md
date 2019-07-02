@@ -46,6 +46,7 @@ public class MainConfig {
 			.name("zj")
 			.build();
 	}
+}
 ```
 
 - @`ComponentScan`  value:指定要扫描的包
@@ -217,4 +218,5 @@ public class MainConfig {
 - `BeanFactoryPostProcessor`
 - `BeanDefinitionRegistryPostProcessor`
 - `SmartInitializingSingleton`
+- `ApplicationListener`
 
