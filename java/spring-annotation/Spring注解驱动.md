@@ -61,7 +61,6 @@ public class MainConfig {
 
 - 定义：对象在spring容器（IOC容器）中的生命周期，也可以理解为对象在spring容器中的创建方式。
 - 作用范围：可标注在方法上
-
 - `singleton`：单例模式，全局有且仅有一个实例
 - `prototype`：原型模式，每次获取Bean的时候会有一个新的实例
 - `request`：表示针对每一次HTTP请求都会产生一个新的bean，同时该bean仅在当前HTTP request内有效
@@ -112,8 +111,8 @@ public class MainConfig {
 
 #### 使用`JSR250`标准
 
-*      `@PostConstruct`：在bean创建完成并且属性赋值完成后执行
-*     `@PreDestroy`：在容器销毁bean之前执行
+- `@PostConstruct`：在bean创建完成并且属性赋值完成后执行
+- `@PreDestroy`：在容器销毁bean之前执行
 
 #### 使用`BeanPostProcessor`后置处理器
 
@@ -137,6 +136,7 @@ public class MainConfig {
 #### 总结
 
 自定义组件想要使用Spring容器底层的一些组件：ApplicationContext，BeanFactory，xxx等，可以实现对应的xxxAware，在创建对象的时候，会调用接口规定的方法注入相关组件，它的底层实现就是使用了`BeanPostProcessor`
+
 ## Spring属性赋值
 
 ### @`value`
@@ -157,7 +157,6 @@ public class MainConfig {
 ### @Autowired
 
 - @Autowired注解可适用于成员变量、方法和构造函数
-
 - 默认优先按照类型去容器中找对应的组件：`applicationContext.getBean(BookDao.class)`
 - 如果容器中存在多个相同类型的组件，再将属性的名称作为组件的id去容器中查找：`applicationContext.getBean("bookDao")`
 - 自动装配默认一定要将属性赋值好，没有就会报错
@@ -194,9 +193,9 @@ public class MainConfig {
 - 定义：Spring提供的可以根据当前环境，动态的激活和切换一系列组件的功能
 - 作用范围：类或方法上
 
-* 加了环境标识的bean，只有这个环境被激活的时候才能注册到容器中
-* 默认是default环境
-* 没有标注环境标识的bean在，任何环境下都是加载的
+- 加了环境标识的bean，只有这个环境被激活的时候才能注册到容器中
+- 默认是default环境
+- 没有标注环境标识的bean在，任何环境下都是加载的
 
 ## Spring AOP
 
