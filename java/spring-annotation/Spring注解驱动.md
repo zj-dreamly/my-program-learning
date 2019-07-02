@@ -204,10 +204,10 @@ public class MainConfig {
 
 - 定义：指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式
 - 前置通知(@Before)：在目标方法运行之前运行
-*        后置通知(@After)：在目标方法运行结束之后运行（无论方法正常结束还是异常结束）
-*        返回通知(@AfterReturning)：在目标方法正常返回之后运行
-*        异常通知(@AfterThrowing)：在目标方法出现异常以后运行
-*        环绕通知(@Around)：动态代理，手动推进目标方法运行（joinPoint.procced()）
+* 后置通知(@After)：在目标方法运行结束之后运行（无论方法正常结束还是异常结束）
+* 返回通知(@AfterReturning)：在目标方法正常返回之后运行
+* 异常通知(@AfterThrowing)：在目标方法出现异常以后运行
+* 环绕通知(@Around)：动态代理，手动推进目标方法运行（joinPoint.procced()）
 
 ## Spring 声明式事务
 
