@@ -34,7 +34,7 @@ public class LogAspect {
 
 	@After("com.github.zj.dreamly.spring.annotation.aop.LogAspect.pointCut()")
 	public void logEnd(JoinPoint joinPoint) {
-		System.out.println("" + joinPoint.getSignature().getName() + "end。。。@After");
+		System.out.println("" + joinPoint.getSignature().getName() + "：end。。。@After");
 	}
 
 	/**
@@ -42,12 +42,12 @@ public class LogAspect {
 	 */
 	@AfterReturning(value = "pointCut()", returning = "result")
 	public void logReturn(JoinPoint joinPoint, Object result) {
-		System.out.println("" + joinPoint.getSignature().getName() + "normal return。。。@AfterReturning:result：{" + result + "}");
+		System.out.println("" + joinPoint.getSignature().getName() + "：normal return。。。@AfterReturning:result：{" + result + "}");
 	}
 
 	@AfterThrowing(value = "pointCut()", throwing = "exception")
 	public void logException(JoinPoint joinPoint, Exception exception) {
-		System.out.println("" + joinPoint.getSignature().getName() + "exception。。。exception：{" + exception + "}");
+		System.out.println("" + joinPoint.getSignature().getName() + "：exception。。。exception：{" + exception + "}");
 	}
 
 }

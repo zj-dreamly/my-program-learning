@@ -24,6 +24,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * 			返回通知(@AfterReturning)：logReturn：在目标方法(div)正常返回之后运行
  * 			异常通知(@AfterThrowing)：logException：在目标方法(div)出现异常以后运行
  * 			环绕通知(@Around)：动态代理，手动推进目标方法运行（joinPoint.procced()）
+ *
  * 4、给切面类的目标方法标注何时何地运行（通知注解）；
  * 5、将切面类和业务逻辑类（目标方法所在类）都加入到容器中;
  * 6、必须告诉Spring哪个类是切面类(给切面类上加一个注解：@Aspect)
@@ -155,7 +156,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * 			拦截器链等信息传入创建一个 CglibMethodInvocation 对象，
  * 			并调用 Object retVal =  mi.proceed();
  * 		5）、拦截器链的触发过程;
- * 			1)、如果没有拦截器执行执行目标方法，或者拦截器的索引和拦截器数组-1大小一样（指定到了最后一个拦截器）执行目标方法；
+ * 			1)、如果没有拦截器直接执行目标方法，或者拦截器的索引和拦截器数组-1大小一样（指定到了最后一个拦截器）执行目标方法；
  * 			2)、链式获取每一个拦截器，拦截器执行invoke方法，每一个拦截器等待下一个拦截器执行完成返回以后再来执行；
  * 				拦截器链的机制，保证通知方法与目标方法的执行顺序；
  *
