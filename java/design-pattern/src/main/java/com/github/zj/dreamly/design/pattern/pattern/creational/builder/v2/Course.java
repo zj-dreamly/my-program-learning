@@ -1,8 +1,11 @@
 package com.github.zj.dreamly.design.pattern.pattern.creational.builder.v2;
 
+import lombok.Data;
+
 /**
  * @author 苍海之南
  */
+@Data
 public class Course {
 
 	private String courseName;
@@ -19,17 +22,6 @@ public class Course {
 		this.courseVideo = courseBuilder.courseVideo;
 		this.courseArticle = courseBuilder.courseArticle;
 		this.courseQA = courseBuilder.courseQA;
-	}
-
-	@Override
-	public String toString() {
-		return "Course{" +
-			"courseName='" + courseName + '\'' +
-			", coursePPT='" + coursePPT + '\'' +
-			", courseVideo='" + courseVideo + '\'' +
-			", courseArticle='" + courseArticle + '\'' +
-			", courseQA='" + courseQA + '\'' +
-			'}';
 	}
 
 	public static class CourseBuilder {
