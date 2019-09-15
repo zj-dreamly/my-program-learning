@@ -113,6 +113,20 @@ public class Array<E> {
 	}
 
 	/**
+	 * 获取数组中最后一个元素
+	 */
+	public E getLast() {
+		return get(size - 1);
+	}
+
+	/**
+	 * 获取数组中第一个元素
+	 */
+	public E getFirst() {
+		return get(0);
+	}
+
+	/**
 	 * 修改index索引位置的元素为e
 	 */
 	public void set(int index, E e) {
