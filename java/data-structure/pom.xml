@@ -16,5 +16,17 @@
     <name>data-structure</name>
     <description>data-structure</description>
 
+    <properties>
+        <hutool.version>4.5.18</hutool.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
