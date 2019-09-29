@@ -116,7 +116,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		stack.push(root);
 		while (!stack.isEmpty()) {
 			Node cur = stack.pop();
-			System.out.println(cur.e);
 
 			if (cur.right != null) {
 				stack.push(cur.right);
