@@ -28,6 +28,8 @@ public class FileOperation {
 
 		try {
 			File file = new File(filename);
+			final String canonicalPath = file.getCanonicalPath();
+			System.out.println(canonicalPath);
 			if (file.exists()) {
 				FileInputStream fis = new FileInputStream(file);
 				scanner = new Scanner(new BufferedInputStream(fis), "UTF-8");
