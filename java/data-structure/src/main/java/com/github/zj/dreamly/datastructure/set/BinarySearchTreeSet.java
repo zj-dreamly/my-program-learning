@@ -1,6 +1,6 @@
 package com.github.zj.dreamly.datastructure.set;
 
-import com.github.zj.dreamly.datastructure.binarysearchtree.BinarySearchTree;
+import com.github.zj.dreamly.datastructure.tree.binarysearchtree.BinarySearchTree;
 
 /**
  * <h2>BSTSet</h2>

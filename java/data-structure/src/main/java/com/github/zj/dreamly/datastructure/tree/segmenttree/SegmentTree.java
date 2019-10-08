@@ -1,4 +1,4 @@
-package com.github.zj.dreamly.datastructure.segmenttree;
+package com.github.zj.dreamly.datastructure.tree.segmenttree;
 
 /**
  * <h2>segmenttree</h2>

@@ -1,4 +1,4 @@
-package com.github.zj.dreamly.datastructure.binarysearchtree;
+package com.github.zj.dreamly.datastructure.tree.binarysearchtree;
 
 import java.util.LinkedList;
 import java.util.Queue;

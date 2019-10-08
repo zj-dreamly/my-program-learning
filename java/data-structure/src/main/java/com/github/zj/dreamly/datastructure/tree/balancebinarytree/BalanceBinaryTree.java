@@ -1,4 +1,4 @@
-package com.github.zj.dreamly.datastructure.balancebinarytree;
+package com.github.zj.dreamly.datastructure.tree.balancebinarytree;
 
 import java.util.ArrayList;
 
@@ -269,7 +269,7 @@ public class BalanceBinaryTree<K extends Comparable<K>, V> {
 	}
 
 	/**
-	 * 从二分搜索树中删除键为key的节点
+	 * 删除键为key的节点
 	 */
 	public V remove(K key) {
 
@@ -367,6 +367,5 @@ public class BalanceBinaryTree<K extends Comparable<K>, V> {
 
 		return retNode;
 	}
-
 }
 
