@@ -124,12 +124,14 @@ public class RedBlackTree<K extends Comparable<K>, V> {
 			return new Node(key, value); // 默认插入红色节点
 		}
 
-		if (key.compareTo(node.key) < 0)
+		if (key.compareTo(node.key) < 0) {
 			node.left = add(node.left, key, value);
-		else if (key.compareTo(node.key) > 0)
+		} else if (key.compareTo(node.key) > 0) {
 			node.right = add(node.right, key, value);
-		else // key.compareTo(node.key) == 0
+		} else // key.compareTo(node.key) == 0
+		{
 			node.value = value;
+		}
 
 		if (isRed(node.right) && !isRed(node.left)) {
 			node = leftRotate(node);
@@ -226,8 +228,9 @@ public class RedBlackTree<K extends Comparable<K>, V> {
 
 	private Node remove(Node node, K key) {
 
-		if (node == null)
+		if (node == null) {
 			return null;
+		}
 
 		if (key.compareTo(node.key) < 0) {
 			node.left = remove(node.left, key);

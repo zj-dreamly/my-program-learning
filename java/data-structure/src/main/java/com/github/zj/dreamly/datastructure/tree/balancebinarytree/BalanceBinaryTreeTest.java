@@ -23,10 +23,11 @@ public class BalanceBinaryTreeTest {
 
 			BalanceBinaryTree<String, Integer> map = new BalanceBinaryTree<>();
 			for (String word : words) {
-				if (map.contains(word))
+				if (map.contains(word)) {
 					map.set(word, map.get(word) + 1);
-				else
+				} else {
 					map.add(word, 1);
+				}
 			}
 
 			System.out.println("Total different words: " + map.getSize());

@@ -39,13 +39,17 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		return size == 0;
 	}
 
-	// 向二分搜索树中添加新的元素e
+	/**
+	 * 向二分搜索树中添加新的元素e
+	 */
 	public void add(E e) {
 		root = add(root, e);
 	}
 
-	// 向以node为根的二分搜索树中插入元素e，递归算法
-	// 返回插入新节点后二分搜索树的根
+	/**
+	 * 向以node为根的二分搜索树中插入元素e，递归算法
+	 * 返回插入新节点后二分搜索树的根
+	 */
 	private Node add(Node node, E e) {
 
 		if (node == null) {
@@ -62,12 +66,16 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		return node;
 	}
 
-	// 看二分搜索树中是否包含元素e
+	/**
+	 * 看二分搜索树中是否包含元素e
+	 */
 	public boolean contains(E e) {
 		return contains(root, e);
 	}
 
-	// 看以node为根的二分搜索树中是否包含元素e, 递归算法
+	/**
+	 * 看以node为根的二分搜索树中是否包含元素e, 递归算法
+	 */
 	private boolean contains(Node node, E e) {
 
 		if (node == null) {
@@ -91,7 +99,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		preOrder(root);
 	}
 
-	// 前序遍历以node为根的二分搜索树, 递归算法
+	/**
+	 * 前序遍历以node为根的二分搜索树, 递归算法
+	 */
 	private void preOrder(Node node) {
 
 		if (node == null) {
@@ -261,7 +271,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		return node;
 	}
 
-	// 从二分搜索树中删除最大值所在节点
+	/**
+	 * 从二分搜索树中删除最大值所在节点
+	 */
 	public E removeMax() {
 		E ret = maximum();
 		root = removeMax(root);

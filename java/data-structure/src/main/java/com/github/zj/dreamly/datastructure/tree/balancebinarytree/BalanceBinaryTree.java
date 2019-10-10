@@ -179,11 +179,11 @@ public class BalanceBinaryTree<K extends Comparable<K>, V> {
 			return new Node(key, value);
 		}
 
-		if (key.compareTo(node.key) < 0)
+		if (key.compareTo(node.key) < 0) {
 			node.left = add(node.left, key, value);
-		else if (key.compareTo(node.key) > 0)
+		} else if (key.compareTo(node.key) > 0) {
 			node.right = add(node.right, key, value);
-		else // key.compareTo(node.key) == 0
+		} else // key.compareTo(node.key) == 0
 		{
 			node.value = value;
 		}
