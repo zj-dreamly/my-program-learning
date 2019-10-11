@@ -20,6 +20,7 @@
         <module>spring-annotation</module>
         <module>deep-in-java</module>
         <module>data-structure</module>
+        <module>socket</module>
     </modules>
 
 </project>
