@@ -9,6 +9,7 @@ import com.github.zj.dreamly.datastructure.queue.Queue;
  * @since: 2019-08-30 09:24
  **/
 public class LoopQueue<E> implements Queue<E> {
+
 	/**
 	 * 默认容量大小
 	 */
