@@ -21,6 +21,7 @@
         <module>deep-in-java</module>
         <module>data-structure</module>
         <module>socket</module>
+        <module>guava</module>
     </modules>
 
 </project>
