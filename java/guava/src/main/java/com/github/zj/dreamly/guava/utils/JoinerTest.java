@@ -33,10 +33,12 @@ public class JoinerTest {
 		"Google", "Guava", "Java", "Scala", null
 	);
 
+	private final String filePath = JoinerTest.class.getResource("/").getPath();
+
 	private final Map<String, String> stringMap = of("Hello", "Guava", "Java", "Scala");
 
-	private final String targetFileName = "G:\\Teaching\\汪文君Google Guava实战视频\\guava-joiner.txt";
-	private final String targetFileNameToMap = "G:\\Teaching\\汪文君Google Guava实战视频\\guava-joiner-map.txt";
+	private final String targetFileName = filePath + "guava-joiner.txt";
+	private final String targetFileNameToMap = filePath + "guava-joiner-map.txt";
 
 	@Test
 	public void testJoinOnJoin() {
