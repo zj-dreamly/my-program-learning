@@ -1,4 +1,4 @@
-package com.github.zj.dreamly.guava.utils;
+package com.github.zj.dreamly.guava.utils.joiner;
 
 import com.google.common.base.Joiner;
 import com.google.common.io.Files;
@@ -59,13 +59,13 @@ public class JoinerTest {
 	}
 
 	@Test
-	public void testJoin_On_Join_WithNullValue_UseDefaultValue() {
+	public void testJoinOnJoinWithNullValueUseDefaultValue() {
 		String result = Joiner.on("#").useForNull("DEFAULT").join(stringListWithNullValue);
 		assertThat(result, equalTo("Google#Guava#Java#Scala#DEFAULT"));
 	}
 
 	@Test
-	public void testJoin_On_Append_To_StringBuilder() {
+	public void testJoinOnAppendToStringBuilder() {
 		final StringBuilder builder = new StringBuilder();
 		StringBuilder resultBuilder = Joiner.on("#").useForNull("DEFAULT").appendTo(builder, stringListWithNullValue);
 		assertThat(resultBuilder, sameInstance(builder));
@@ -74,7 +74,7 @@ public class JoinerTest {
 	}
 
 	@Test
-	public void testJoin_On_Append_To_Writer() {
+	public void testJoinOnAppendToWriter() {
 
 		try (FileWriter writer = new FileWriter(new File(targetFileName))) {
 			Joiner.on("#").useForNull("DEFAULT").appendTo(writer, stringListWithNullValue);
