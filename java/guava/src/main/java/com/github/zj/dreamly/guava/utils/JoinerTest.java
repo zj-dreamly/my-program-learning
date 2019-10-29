@@ -1,4 +1,4 @@
-package com.github.zj.dreamly.guava.utils.joiner;
+package com.github.zj.dreamly.guava.utils;
 
 import com.google.common.base.Joiner;
 import com.google.common.io.Files;

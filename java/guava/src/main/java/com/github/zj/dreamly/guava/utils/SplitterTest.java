@@ -1,4 +1,4 @@
-package com.github.zj.dreamly.guava.utils.splitter;
+package com.github.zj.dreamly.guava.utils;
 
 import com.google.common.base.Splitter;
 import org.junit.Test;

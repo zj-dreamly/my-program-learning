@@ -1,4 +1,4 @@
-package com.github.zj.dreamly.guava.utils.string;
+package com.github.zj.dreamly.guava.utils;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
