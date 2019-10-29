@@ -13,9 +13,9 @@ import java.util.Map;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static java.util.stream.Collectors.joining;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsSame.sameInstance;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 /**
