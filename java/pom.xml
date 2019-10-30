@@ -22,6 +22,7 @@
         <module>data-structure</module>
         <module>socket</module>
         <module>guava</module>
+        <module>jdk8</module>
     </modules>
 
 </project>
