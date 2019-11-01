@@ -23,6 +23,7 @@
         <module>socket</module>
         <module>guava</module>
         <module>jdk8</module>
+        <module>concurrent</module>
     </modules>
 
 </project>
