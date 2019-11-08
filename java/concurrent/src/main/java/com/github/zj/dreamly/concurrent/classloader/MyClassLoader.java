@@ -49,6 +49,42 @@ public class MyClassLoader extends ClassLoader {
 		return this.defineClass(name, classBytes, 0, classBytes.length);
 	}
 
+	/**
+	 * 重写此方法即打破双亲委派机制
+	 */
+	@Override
+	protected Class<?> loadClass(String name, boolean resolve)
+		throws ClassNotFoundException {
+		Class<?> clazz = null;
+
+		if (name.startsWith("java.")) {
+			try {
+				ClassLoader system = ClassLoader.getSystemClassLoader();
+				clazz = system.loadClass(name);
+				if (clazz != null) {
+					if (resolve) {
+						resolveClass(clazz);
+					}
+					return clazz;
+				}
+			} catch (Exception e) {
+				//ignore
+			}
+		}
+
+		try {
+			clazz = findClass(name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (clazz == null && getParent() != null) {
+			getParent().loadClass(name);
+		}
+
+		return clazz;
+	}
+
 	private byte[] loadClassBytes(File classFile) {
 		try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			 FileInputStream fis = new FileInputStream(classFile)) {
