@@ -1,4 +1,4 @@
-package com.github.zj.dreamly.concurrent.util;
+package com.github.zj.dreamly.concurrent.util.countdownlatch;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
