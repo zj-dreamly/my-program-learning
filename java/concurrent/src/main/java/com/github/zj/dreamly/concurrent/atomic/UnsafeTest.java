@@ -21,14 +21,9 @@ public class UnsafeTest {
 	 * most of which based on memory management.
 	 * But, there is a way to do such mistakes intentionally,
 	 * using Unsafe class.
-	 *
-	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-//        Unsafe unsafe = Unsafe.getUnsafe();
-//        System.out.println(unsafe);
-//        Unsafe unsafe = getUnsafe();
-//        System.out.println(unsafe);
+
 
 		/*
 		 * StupidCounter
