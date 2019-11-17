@@ -61,7 +61,10 @@ public class StampedLockExample {
         executor.submit(writeTask);
     }
 
-    private static void read() {
+	/**
+	 * 悲观读
+	 */
+	private static void read() {
         long stamped = -1;
         try {
             stamped = LOCK.readLock();
@@ -76,7 +79,10 @@ public class StampedLockExample {
         }
     }
 
-    private static void optimisticRead() {
+	/**
+	 * 乐观读
+	 */
+	private static void optimisticRead() {
 
         long stamp = LOCK.tryOptimisticRead();
         if (LOCK.validate(stamp)) {

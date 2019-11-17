@@ -13,34 +13,6 @@ public class ReentrantLockExample {
 
 	public static void main(String[] args) throws InterruptedException {
 
-        /*IntStream.range(0, 2).forEach(i -> new Thread() {
-            @Override
-            public void run() {
-                needLockBySync();
-            }
-        }.start());
-       Thread thread1 = new Thread(() -> testUnInterruptibly());
-        thread1.start();
-
-        TimeUnit.SECONDS.sleep(1);
-
-        Thread thread2 = new Thread(() -> testUnInterruptibly());
-        thread2.start();
-        TimeUnit.SECONDS.sleep(1);
-
-
-        thread2.interrupt();
-        System.out.println("================");
-
-
-        Thread thread1 = new Thread(() -> testTryLock());
-        thread1.start();
-
-        TimeUnit.SECONDS.sleep(1);
-
-        Thread thread2 = new Thread(() -> testTryLock());
-        thread2.start();*/
-
 		Thread thread1 = new Thread(ReentrantLockExample::testUnInterruptibly);
 		thread1.start();
 
