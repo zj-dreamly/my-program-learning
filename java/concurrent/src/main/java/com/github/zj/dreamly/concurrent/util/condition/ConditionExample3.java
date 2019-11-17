@@ -6,6 +6,9 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.IntStream;
 
+/**
+ * @author 苍海之南
+ */
 public class ConditionExample3 {
 
 	private final static ReentrantLock LOCK = new ReentrantLock();
