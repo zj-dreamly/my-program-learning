@@ -62,6 +62,7 @@ public class ThreadPoolExecutorTask {
 		///executorService.awaitTermination(1, TimeUnit.HOURS);
 		System.out.println("==============over=================");
 		System.out.println(runnableList);
+		assert runnableList != null;
 		System.out.println(runnableList.size());
 	}
 }

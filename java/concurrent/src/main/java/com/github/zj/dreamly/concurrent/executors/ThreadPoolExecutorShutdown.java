@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 /**
  * @author 苍海之南
  */
-public class ThreadPoolExecutorLongTimeTask {
+public class ThreadPoolExecutorShutdown {
 	public static void main(String[] args) throws InterruptedException {
 		ExecutorService executorService = new ThreadPoolExecutor(10, 20, 30, TimeUnit.SECONDS,
 			new ArrayBlockingQueue<>(10), r -> {
