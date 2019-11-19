@@ -64,7 +64,8 @@ public class ExecutorServiceExample1 {
 
 	private static void executeRunnableError() throws InterruptedException {
 		ExecutorService executorService = Executors.newFixedThreadPool(10, new MyThreadFactory());
-		IntStream.range(0, 10).boxed().forEach(i -> executorService.execute(() -> System.out.println(1 / 0)));
+		IntStream.range(0, 10).boxed().forEach(i -> executorService.execute(() ->
+			System.out.println(1 / 0)));
 		executorService.shutdown();
 		executorService.awaitTermination(10, TimeUnit.MINUTES);
 		System.out.println("========================");
