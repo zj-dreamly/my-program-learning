@@ -10,19 +10,6 @@ import java.util.concurrent.*;
  */
 public class CompletionServiceExample1 {
 
-	public static final List<Callable<Integer>> callableList = Arrays.asList(
-		() -> {
-			sleep(10);
-			System.out.println("The 10 finished");
-			return 10;
-		},
-		() -> {
-			sleep(20);
-			System.out.println("The 20 finished");
-			return 20;
-		}
-	);
-
 	/**
 	 * Demo the Future defect.
 	 */
@@ -52,15 +39,27 @@ public class CompletionServiceExample1 {
 	private static void futureDefect2() throws InterruptedException, ExecutionException {
 		ExecutorService service = Executors.newFixedThreadPool(2);
 
-
 		List<Future<Integer>> futures = new ArrayList<>();
-		futures.add(service.submit(callableList.get(0)));
-		futures.add(service.submit(callableList.get(1)));
+		futures.add(service.submit(CALLABLE_LIST.get(0)));
+		futures.add(service.submit(CALLABLE_LIST.get(1)));
 
 		for (Future<Integer> future : futures) {
 			System.out.println(future.get());
 		}
 	}
+
+	private static final List<Callable<Integer>> CALLABLE_LIST = Arrays.asList(
+		() -> {
+			sleep(10);
+			System.out.println("The 10 finished");
+			return 10;
+		},
+		() -> {
+			sleep(20);
+			System.out.println("The 20 finished");
+			return 20;
+		}
+	);
 
 	/**
 	 * sleep the specify seconds

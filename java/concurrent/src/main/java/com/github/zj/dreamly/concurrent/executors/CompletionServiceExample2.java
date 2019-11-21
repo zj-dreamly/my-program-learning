@@ -24,7 +24,7 @@ public class CompletionServiceExample2 {
 		System.out.println(completionService.take().get().result);
 	}
 
-	public static void testTake() throws InterruptedException, ExecutionException {
+	private static void testTake() throws InterruptedException, ExecutionException {
 		ExecutorService service = Executors.newFixedThreadPool(2);
 		final List<Callable<Integer>> callableList = Arrays.asList(
 			() -> {
