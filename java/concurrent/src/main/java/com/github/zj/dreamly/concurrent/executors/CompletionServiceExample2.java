@@ -1,7 +1,5 @@
 package com.github.zj.dreamly.concurrent.executors;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +11,11 @@ import java.util.concurrent.*;
 public class CompletionServiceExample2 {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		testSubmit();
+		testTake();
+	}
 
+	private static void testSubmit() throws InterruptedException, ExecutionException {
 		ExecutorService service = Executors.newFixedThreadPool(2);
 		ExecutorCompletionService<Event> completionService = new ExecutorCompletionService<>(service);
 		final Event event = new Event(1);
@@ -22,8 +24,7 @@ public class CompletionServiceExample2 {
 		System.out.println(completionService.take().get().result);
 	}
 
-	@Test
-	public void test() throws InterruptedException, ExecutionException {
+	public static void testTake() throws InterruptedException, ExecutionException {
 		ExecutorService service = Executors.newFixedThreadPool(2);
 		final List<Callable<Integer>> callableList = Arrays.asList(
 			() -> {
