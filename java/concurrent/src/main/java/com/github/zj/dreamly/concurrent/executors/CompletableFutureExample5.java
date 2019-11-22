@@ -15,8 +15,6 @@ public class CompletableFutureExample5 {
 		completeExceptionally();
 		obtrudeException();
 
-		CompletableFuture<String> future = errorHandle();
-		future.whenComplete((v, t) -> System.out.println(v));
 		Thread.currentThread().join();
 	}
 
@@ -81,10 +79,12 @@ public class CompletableFutureExample5 {
 
 	private static void getNow() throws ExecutionException, InterruptedException {
 		CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+			System.out.println("======i will be still process...");
 			sleep(5);
 			return "HELLO";
 		});
 
+		///sleep(1);
 		String result = future.getNow("WORLD");
 
 		System.out.println(result);
