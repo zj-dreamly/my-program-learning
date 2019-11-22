@@ -28,7 +28,7 @@ public class CompletableFutureExample2 {
 
 		Object s = null;
 
-		CompletableFuture.<Object>supplyAsync(() -> s);
+		CompletableFuture.supplyAsync(() -> s);
 	}
 
 	private static void allOf() {
