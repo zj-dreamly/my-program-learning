@@ -93,7 +93,7 @@ public class DelayQueueTest {
 	}
 
 	@Test
-	public void testAdd6() throws InterruptedException {
+	public void testAdd6() {
 		DelayQueue<DelayElement<String>> delayQueue = new DelayQueue<>();
 		try {
 			delayQueue.add(null);
