@@ -15,9 +15,14 @@ public class CompletableFutureExample5 {
 		completeExceptionally();
 		obtrudeException();
 
+		CompletableFuture<String> future = errorHandle();
+		future.whenComplete((v, t) -> System.out.println(v));
 		Thread.currentThread().join();
 	}
 
+	/**
+	 * 先返回一部分, 继续执行另一部分
+	 */
 	private static CompletableFuture<String> errorHandle() {
 		CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
 			sleep(5);
@@ -71,7 +76,8 @@ public class CompletableFutureExample5 {
 			System.out.println("======i will be still process...");
 			return "HELLO";
 		});
-		sleep(1);
+		///sleep(1);
+		//如果此时任务还没开始,会被直接取消
 		boolean finished = future.complete("WORLD");
 		System.out.println(finished);
 		System.out.println(future.get());
