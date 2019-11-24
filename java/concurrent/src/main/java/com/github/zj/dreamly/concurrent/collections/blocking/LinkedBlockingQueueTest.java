@@ -12,7 +12,7 @@ import static org.junit.Assert.fail;
  * {@link LinkedBlockingQueue}
  * @author 苍海之南
  */
-public class LinkedBlockingQueueExampleTest {
+public class LinkedBlockingQueueTest {
 
 	/**
 	 * Test the {@link LinkedBlockingQueue#add(Object)}
