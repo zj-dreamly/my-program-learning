@@ -10,6 +10,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
 
+/**
+ * @author 苍海之南
+ */
 public class SynchronousQueueTest {
 
 	@Test

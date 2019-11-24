@@ -88,7 +88,7 @@ public class ArrayBlockingQueueTest {
 	 * Inserts the specified element at the tail of this queue, waiting
 	 * for space to become available if the queue is full.
 	 *
-	 * @throws InterruptedException
+	 * @throws InterruptedException InterruptedException
 	 */
 	@Test
 	public void testPutMethodExceedCapacity() throws InterruptedException {
