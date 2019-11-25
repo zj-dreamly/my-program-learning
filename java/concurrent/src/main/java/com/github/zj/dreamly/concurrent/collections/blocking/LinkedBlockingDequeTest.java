@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * @author 苍海之南
  */
-public class LinkedBlockingDequeExampleTest {
+public class LinkedBlockingDequeTest {
 
 	@Test
 	public void testAddFirst() {

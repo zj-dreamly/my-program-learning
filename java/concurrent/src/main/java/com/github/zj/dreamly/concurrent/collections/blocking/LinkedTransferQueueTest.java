@@ -14,7 +14,7 @@ import static org.junit.Assert.fail;
 /**
  * @author 苍海之南
  */
-public class LinkedTransferQueueExampleTest {
+public class LinkedTransferQueueTest {
 
 	/**
 	 * Transfers the element to a waiting consumer immediately, if possible.
