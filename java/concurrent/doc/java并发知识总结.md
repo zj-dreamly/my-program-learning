@@ -41,7 +41,7 @@ CPU的读取遵循下面几点：
 - 如果缓存处于M或E的CPU读取到其他CPU有读操作，就把自己的缓存写入到内存中，并将自己的状态设置为S。
 - 只有缓存状态是M或E的时候，CPU才可以修改缓存中的数据，修改后，缓存状态变为M。
 
-![](..\image\325120-bc5c8371e69048d4.webp)
+![](..\image\325120-bc5c8371e69048d4.jpg)
 
 上图展示了MESI高速缓存一致性协议的状态转换实例。
 
@@ -58,7 +58,7 @@ CPU的读取遵循下面几点：
 
 Java内存模型（Java Memory Model），定义了JVM在计算机内存上的工作方式。JVM是对整个计算机的虚拟模型，所以JMM是隶属于JVM的。如果我们要想深入了解Java并发编程，就要先理解好Java内存模型。Java内存模型定义了多线程之间共享变量的可见性以及如何在需要的时候对共享变量进行同步。
 
-![](..\image\325120-82daf8a71caae552.webp)
+![](..\image\325120-82daf8a71caae552.jpg)
 
 1、堆：（存放由new创建的对象和数组）
 
@@ -907,7 +907,7 @@ private volatile int state;
 
 
 
-![img](..\image\325120-eec3a6a29903a918.webp)
+![img](..\image\325120-eec3a6a29903a918.jpg)
 
 
 
@@ -1100,7 +1100,7 @@ private final static int threadCount = 20;
 
 
 
-![img](..\image\325120-810222c987209828.webp)
+![img](..\image\325120-810222c987209828.jpg)
 
 
 
