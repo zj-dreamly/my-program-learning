@@ -20,7 +20,7 @@
         <module>spring-annotation</module>
         <module>deep-in-java</module>
         <module>data-structure</module>
-        <module>socket</module>
+        <module>io</module>
         <module>guava</module>
         <module>jdk8</module>
         <module>concurrent</module>
