@@ -49,7 +49,8 @@ public class StringDemo {
             this.value = value.toCharArray();
         }
 
-        public final int hashCode() {
+        @Override
+		public final int hashCode() {
             int h = hash;
             if (h == 0 && value.length > 0) {
                 char val[] = value;
@@ -62,7 +63,8 @@ public class StringDemo {
             return h;
         }
 
-        public final boolean equals(Object object) {
+        @Override
+		public final boolean equals(Object object) {
             return true;
         }
     }

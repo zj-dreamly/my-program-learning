@@ -18,7 +18,7 @@ public class Math1 {
             System.out.println(e.getMessage());
         }
 
-        long maxUnsignedInt = (1l << 32) - 1;
+        long maxUnsignedInt = (1L << 32) - 1;
         System.out.println(maxUnsignedInt);
 
         String string = String.valueOf(maxUnsignedInt);

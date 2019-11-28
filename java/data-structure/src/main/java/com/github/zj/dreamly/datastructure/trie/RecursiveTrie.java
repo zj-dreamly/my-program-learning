@@ -117,7 +117,7 @@ public class RecursiveTrie {
 	 * 删除word, 返回是否删除成功, 递归算法
 	 */
 	public boolean remove(String word) {
-		if (word.equals("")) {
+		if ("".equals(word)) {
 			return false;
 		}
 		return remove(root, word, 0);

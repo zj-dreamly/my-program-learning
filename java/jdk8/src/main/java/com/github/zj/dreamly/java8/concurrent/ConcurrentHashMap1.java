@@ -40,7 +40,7 @@ public class ConcurrentHashMap1 {
 
 		String result1 = map.search(1, (key, value) -> {
 			System.out.println(Thread.currentThread().getName());
-			if (key.equals("foo") && value.equals("bar")) {
+			if ("foo".equals(key) && "bar".equals(value)) {
 				return "foobar";
 			}
 			return null;

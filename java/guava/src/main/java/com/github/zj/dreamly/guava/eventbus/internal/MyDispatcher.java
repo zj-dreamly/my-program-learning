@@ -59,8 +59,9 @@ public class MyDispatcher {
 	}
 
 	public void close() {
-		if (executorService instanceof ExecutorService)
+		if (executorService instanceof ExecutorService) {
 			((ExecutorService) executorService).shutdown();
+		}
 	}
 
 	static MyDispatcher newDispatcher(MyEventExceptionHandler exceptionHandler, Executor executor) {

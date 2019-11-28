@@ -7,6 +7,9 @@ import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * @author 苍海之南
+ */
 public class Server {
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(2000);

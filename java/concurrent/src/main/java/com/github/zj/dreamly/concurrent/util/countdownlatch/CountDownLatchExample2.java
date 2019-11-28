@@ -11,45 +11,38 @@ public class CountDownLatchExample2 {
 
 		final CountDownLatch latch = new CountDownLatch(1);
 
-		new Thread() {
-			@Override
-			public void run() {
-				System.out.println("Do some initial working.");
-				try {
-					Thread.sleep(1000);
-					latch.await();
-					System.out.println("Do other working...");
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+		new Thread(() -> {
+			System.out.println("Do some initial working.");
+			try {
+				Thread.sleep(1000);
+				latch.await();
+				System.out.println("Do other working...");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		}.start();
+		}).start();
 
-		new Thread() {
-			public void run() {
-				try {
-					latch.await();
-					System.out.println("release.");
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+		new Thread(() -> {
+			try {
+				latch.await();
+				System.out.println("release.");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		}.start();
+		}).start();
 
-		new Thread() {
-			public void run() {
-				System.out.println("asyn prepare for some data.");
-				try {
-					Thread.sleep(2000);
-					System.out.println("data prepare for done.");
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} finally {
-					latch.countDown();
-				}
-
+		new Thread(() -> {
+			System.out.println("asyn prepare for some data.");
+			try {
+				Thread.sleep(2000);
+				System.out.println("data prepare for done.");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} finally {
+				latch.countDown();
 			}
-		}.start();
+
+		}).start();
 
 		Thread.currentThread().join();
 

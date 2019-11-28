@@ -12,7 +12,8 @@ public class MethodArgumentsDemo implements Comparable<MethodArgumentsDemo> {
     private int value;
 
     // 方法参数名称设计
-    public boolean equals(Object that) {
+    @Override
+	public boolean equals(Object that) {
         return this.value == ((MethodArgumentsDemo) that).value;
     }
 

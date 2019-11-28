@@ -19,7 +19,7 @@ public class CompletableFutureExample3 {
 		Thread.currentThread().join();
 	}
 
-	private static void testWhenCompleteAsync() throws ExecutionException, InterruptedException {
+	private static void testWhenCompleteAsync() {
 		CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Hello");
 		future.whenCompleteAsync((v, t) -> {
 			try {
@@ -32,7 +32,7 @@ public class CompletableFutureExample3 {
 		});
 	}
 
-	private static void testWhenComplete() throws ExecutionException, InterruptedException {
+	private static void testWhenComplete() {
 		CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Hello");
 		future.whenComplete((v, t) -> {
 			try {

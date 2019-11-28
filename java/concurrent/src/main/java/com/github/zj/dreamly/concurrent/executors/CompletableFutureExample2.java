@@ -10,16 +10,16 @@ import java.util.concurrent.TimeUnit;
  */
 public class CompletableFutureExample2 {
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
+
 		supplyAsync();
 
 		runAsync();
 
-		Future<Void> future = completed("HEllo");
+		Future<Void> future = completed("HELLO");
 		System.out.println(future.isDone());
 
 		System.out.println(">>>>>" + anyOf().get());
 
-		//allOf();
 		Thread.currentThread().join();
 	}
 

@@ -52,8 +52,9 @@ public class DirectoryTargetMonitor implements TargetMonitor {
 			} catch (Exception e) {
 				this.start = false;
 			} finally {
-				if (watchKey != null)
+				if (watchKey != null) {
 					watchKey.reset();
+				}
 			}
 		}
 	}

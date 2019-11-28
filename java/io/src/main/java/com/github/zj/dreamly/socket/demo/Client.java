@@ -5,6 +5,9 @@ import java.net.Inet4Address;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+/**
+ * @author 苍海之南
+ */
 public class Client {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket();

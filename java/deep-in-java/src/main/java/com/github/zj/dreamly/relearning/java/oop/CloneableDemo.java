@@ -60,7 +60,8 @@ class Data extends Object implements Cloneable {
      * @return
      * @throws CloneNotSupportedException
      */
-    public Data clone() throws CloneNotSupportedException {
+    @Override
+	public Data clone() throws CloneNotSupportedException {
         Data copy = (Data) super.clone();
         // 原生类型没有浅深关系
         // 对象类型需要复制

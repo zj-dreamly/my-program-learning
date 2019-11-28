@@ -5,14 +5,14 @@ package com.github.zj.dreamly.design.pattern.pattern.behavioral.interpreter;
  */
 public class OperatorUtil {
 	public static boolean isOperator(String symbol) {
-		return (symbol.equals("+") || symbol.equals("*"));
+		return ("+".equals(symbol) || "*".equals(symbol));
 
 	}
 
 	public static Interpreter getExpressionObject(Interpreter firstExpression, Interpreter secondExpression, String symbol) {
-		if (symbol.equals("+")) {
+		if ("+".equals(symbol)) {
 			return new AddInterpreter(firstExpression, secondExpression);
-		} else if (symbol.equals("*")) {
+		} else if ("*".equals(symbol)) {
 			return new MultiInterpreter(firstExpression, secondExpression);
 		}
 		return null;

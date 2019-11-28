@@ -11,8 +11,8 @@ import static java.util.stream.Collectors.toList;
  */
 public class CompletableFutureExample1 {
 	public static void main(String[] args) throws InterruptedException {
-		testCompletableFuture();
 		testFuture();
+		testCompletableFuture();
 		Thread.currentThread().join();
 	}
 

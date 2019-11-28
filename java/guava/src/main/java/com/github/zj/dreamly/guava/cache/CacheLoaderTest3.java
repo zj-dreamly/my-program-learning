@@ -26,7 +26,7 @@ public class CacheLoaderTest3 {
 	@Test
 	public void testLoadNullValue() {
 		CacheLoader<String, Employee> cacheLoader = CacheLoader
-			.from(k -> k.equals("null") ? null : new Employee(k, k, k));
+			.from(k -> "null".equals(k) ? null : new Employee(k, k, k));
 		LoadingCache<String, Employee> loadingCache = CacheBuilder.newBuilder().build(cacheLoader);
 
 		Employee alex = loadingCache.getUnchecked("Alex");
@@ -46,7 +46,7 @@ public class CacheLoaderTest3 {
 		CacheLoader<String, Optional<Employee>> loader = new CacheLoader<String, Optional<Employee>>() {
 			@Override
 			public Optional<Employee> load(String key) throws Exception {
-				if (key.equals("null")) {
+				if ("null".equals(key)) {
 					return Optional.fromNullable(null);
 				} else {
 					return Optional.fromNullable(new Employee(key, key, key));
