@@ -37,6 +37,7 @@
     <modules>
         <module>java</module>
         <module>html</module>
+        <module>css</module>
     </modules>
 
     <licenses>
