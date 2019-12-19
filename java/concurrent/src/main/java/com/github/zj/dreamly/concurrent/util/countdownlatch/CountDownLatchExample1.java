@@ -16,18 +16,18 @@ public class CountDownLatchExample1 {
 
 	private static ExecutorService executor = Executors.newFixedThreadPool(2);
 
-	private static final CountDownLatch latch = new CountDownLatch(10);
+	private static final CountDownLatch LATCH = new CountDownLatch(10);
 
 	public static void main(String[] args) throws InterruptedException {
 		//(1)
 		int[] data = query();
 		//(2)
 		for (int i = 0; i < data.length; i++) {
-			executor.execute(new SimpleRunnable(data, i, latch));
+			executor.execute(new SimpleRunnable(data, i, LATCH));
 		}
 
 		//(3)
-		latch.await();
+		LATCH.await();
 		System.out.println("all of work finish done.");
 		executor.shutdown();
 
