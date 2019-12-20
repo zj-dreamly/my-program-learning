@@ -188,7 +188,7 @@ span   跨度，跨距；范围
 
 border 后面我们会用css来做，这里童鞋们就记住这个border 单词就好了
 
-**注意: **
+**注意：**
 
 1. 标签可以拥有多个属性，必须写在开始标签中，位于标签名后面。
 2. 属性之间不分先后顺序，标签名与属性、属性与属性之间均以空格分开。
@@ -197,27 +197,25 @@ border 后面我们会用css来做，这里童鞋们就记住这个border 单词
 
 比如:  
 
+- 正常的
 ```html
-	正常的<br />
-    <img src="cz.jpg" width="300" height="300" /><br />
-     带有边框的<br />
-    <img src="cz.jpg" width="300" height="300" border="3" /><br />
-	有提示文本的<br />
-	<img src="cz.jpg" width="300" height="300" border="3" title="这是个小蒲公英" /><br />
-	有替换文本的<br />
-	<img src="cz.jpg" width="300" height="300" border="3" alt="图片不存在" />
+    <img src="cz.jpg" width="300" height="300" />
 ```
-
-此处有练习题
-
-**重点掌握点：**
-
-- [ ] 请说出 图像标签那个属性是必须要写的？  img  src 图片的路径
-- [ ] 请说出 图像标签中 alt 和  title 属性区别？ alt 图片显示不出，文字就显示     title 鼠标经过图片的时候显示文字
-
+- 带有边框的
+```html
+<img src="cz.jpg" width="300" height="300" border="3" />
+```
+- 有提示文本
+```html
+<img src="cz.jpg" width="300" height="300" border="3" title="这是个小蒲公英" />
+```
+- 有替换文本
+```html
+<img src="cz.jpg" width="300" height="300" border="3" alt="图片不存在" />
+```
 ## 1.5 链接标签(重点)
 
-单词缩写：  anchor 的缩写  [ˈæŋkə(r)] 。基本解释 锚, 铁锚 的
+单词缩写：  anchor 的缩写  [ˈæŋkə(r)] 。基本解释：锚, 铁锚 的
 
 在HTML中创建超链接非常简单，只需用标签把文字包括起来就好。
 
@@ -278,14 +276,14 @@ border 后面我们会用css来做，这里童鞋们就记住这个border 单词
 
 *推荐：*
 
-```
+```html
 <!-- Comment Text -->
 <div>...</div>
 ```
 
 *不推荐：*
 
-```
+```html
 <div>...</div><!-- Comment Text -->	
 	
 <div><!-- Comment Text -->
@@ -363,8 +361,6 @@ border 后面我们会用css来做，这里童鞋们就记住这个border 单词
 
 # 4. 综合案例：  圣诞
 
-
-
 # 5. @拓展阅读
 
 #### 5.1 锚点定位 （难点）
@@ -395,9 +391,7 @@ border 后面我们会用css来做，这里童鞋们就记住这个border 单词
 <base target="_blank" />
 ```
 
-<img src="/media/base.png" />
-
-**总结： **
+**总结：**
 
 1. base 可以设置整体链接的打开状态   
 2. base 写到  <head>  </head>  之间
@@ -409,9 +403,9 @@ border 后面我们会用css来做，这里童鞋们就记住这个border 单词
 
 #### 5.3 预格式化文本pre标签
 
-<pre> 标签可定义预格式化的文本。
+pre 标签可定义预格式化的文本。
 
-被包围在 <pre> 标签 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
+被包围在 ``<pre>`` 标签 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
 
 ```html
 <pre>
@@ -424,6 +418,7 @@ border 后面我们会用css来做，这里童鞋们就记住这个border 单词
 
 </pre>
 ```
+
 
 **pink老师 一句话说出他们:**
 
@@ -451,13 +446,13 @@ border 后面我们会用css来做，这里童鞋们就记住这个border 单词
 
    *推荐：*
 
-```
+```html
    <a href="#">more &gt;&gt;</a>
 ```
 
    *不推荐：*
 
-```
+```html
    <a href="#">more >> </a>
 ```
 
@@ -504,7 +499,3 @@ XHTML 是更严格更纯净的 HTML 代码。
   例如： 
 
   <img src="media/qq.png" />
-
-    可以把你今天学习的内容放在表格内，再次作为总结
-
-  
