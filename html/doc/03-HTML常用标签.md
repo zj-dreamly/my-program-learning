@@ -390,7 +390,7 @@ border 后面我们会用css来做，这里童鞋们就记住这个border 单词
 **总结：**
 
 1. base 可以设置整体链接的打开状态   
-2. base 写到  <head>  </head>  之间
+2. base 写到 ``<head></head>``之间
 3. 把所有的连接 都默认添加 target="_blank"
 
 **pink老师 一句话说出他们:**
