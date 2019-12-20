@@ -1,8 +1,3 @@
----
-typora-copy-images-to: media
----
-
-> 第01阶段.前端基础.CSS基础选择器
 # CSS选择器（重点）
 
  学习目标：

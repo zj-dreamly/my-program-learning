@@ -1,8 +1,3 @@
----
-typora-copy-images-to: media
----
-
-> 第01阶段.前端基础.CSS初识
 # CSS层叠样式表
 
 ## 学习目标

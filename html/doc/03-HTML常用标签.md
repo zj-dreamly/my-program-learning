@@ -1,8 +1,3 @@
----
-typora-copy-images-to: media
----
-
-> 第01阶段.前端基础.HTML常用标签
 ## 学习目标
 
 - 理解：
