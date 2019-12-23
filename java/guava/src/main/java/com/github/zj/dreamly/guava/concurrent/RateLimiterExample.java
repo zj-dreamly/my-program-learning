@@ -16,7 +16,7 @@ public class RateLimiterExample {
 	public static void main(String[] args) {
 		ExecutorService service = Executors.newFixedThreadPool(10);
 		IntStream.range(0, 10).forEach(i ->
-			service.submit(RateLimiterExample::testSemaphore)
+			service.submit(RateLimiterExample::testLimiter)
 		);
 	}
 
