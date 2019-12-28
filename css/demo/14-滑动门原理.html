@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*1. a 是 设置 左侧 背景 （左门）*/
+		a {
+			 /*因为我们是滑动门，左右推拉 跟文字内容多少有关系，此时需要用文字撑开盒子， 就要用到行内块*/
+			display: inline-block;
+			height: 33px;
+			background: url(images/to.png) no-repeat;
+			margin: 100px;
+			padding-left: 15px;
+			color: #fff;
+		}
+		/*2. span 是设置 右侧 背景 （右门）*/
+		a span {
+			display: inline-block;
+			height: 33px;
+			/*一定注意 span 需要背景图片 右对齐*/
+			background: url(images/to.png) no-repeat right top;
+			padding-right: 15px;
+		}
+		/*3 因为整个导航栏都是 链接 所以 a 要包含 span */
+		
+	</style>
+</head>
+<body>
+	<a href="#">
+		<span>首页</span>
+	</a>
+	<a href="#">
+		<span>公司新闻</span>
+	</a>
+</body>
+</html>

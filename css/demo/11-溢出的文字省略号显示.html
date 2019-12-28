@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>溢出的文字省略号显示</title>
+	<style>
+		div {
+			width: 150px;
+			height: 25px;
+			border: 1px solid pink;
+			/*当文字显示不开的时候，自动换行*/
+			/*white-space: normal;*/
+			/*1. 要文字强制一行内显示 除非 遇到 br   */
+			white-space: nowrap;
+			/*2. 溢出隐藏*/
+			overflow: hidden;
+			/*3. 文字溢出 用省略号替代  ellipsis 省略号*/
+			text-overflow: ellipsis;
+
+		}
+	</style>
+</head>
+<body>
+	<div>hi~ 来自猩猩的你-欢迎你</div>
+</body>
+</html>

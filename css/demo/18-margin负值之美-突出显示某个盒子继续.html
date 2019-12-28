@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>margin负值之美-突出显示某个盒子</title>
+	<style>
+		div {
+			position: relative;
+			/*浮动的盒子是紧贴在一起的*/
+			float: left;
+			width: 200px;
+			height: 300px;
+			border: 1px solid #ccc;
+			margin-left: -1px;
+			margin-top: -1px;
+		}
+		/*鼠标经过div 的意思  p:hover */
+		div:hover {
+			/*我要让当前鼠标经过的这个div 升到最高处来就好了*/
+			/*定位的盒子是最高层的  */
+			border: 1px solid #f40;
+			/*都是定位的盒子，我们通过z-index 来实现层级关系*/
+			z-index: 1;
+
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,335 @@
+/*css 初始化代码 css reset*/
+/*清除元素默认的内外边距*/
+* {
+	margin: 0;
+	padding: 0;
+}
+/*清除列表样式*/
+li {
+	list-style: none;
+}
+/*取消表单的轮廓线*/
+input {
+	outline: none;
+}
+/*去掉button 默认自带的边框*/
+button {
+	border: none;
+}
+body {
+	background-color: #f3f5f7;
+	/*方便写代码 一会别忘了删除*/
+	/*height: 3000px;*/
+}
+a {
+	text-decoration: none;
+}
+/*清除浮动的*/
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: table;
+}
+.clearfix:after {
+	clear: both;
+}
+.clearfix {
+	*zoom: 1;
+}
+/*版心 1200 水平居中*/
+.w {
+	width: 1200px;
+	margin: auto;
+}
+.fixedbar {
+	position: fixed;
+	top: 200px;
+	left: 50%;
+	z-index: 999;
+	/*-600 版心的一半  + 自己的宽度  = 780 */
+	margin-left: -790px;
+	width: 180px;
+	height: 420px;
+	background-color: pink;
+
+}
+/*header start*/
+.header {
+	height: 42px;
+	/*background-color: pink;*/
+	margin: 30px auto;
+}
+.logo {
+	float: left;
+	margin-right: 60px;
+}
+.nav {
+	float: left;
+}
+.nav ul li {
+	float: left;
+}
+.nav ul li a {
+	display: block;
+	height: 40px;
+	padding: 0 10px;
+	margin-right: 20px;
+	line-height: 40px;
+	font-size: 18px;
+	color: #050505;
+	text-decoration: none;
+}
+/*鼠标经过链接 才有底边框*/
+.nav ul li a:hover {
+	border-bottom: 2px solid #00a4ff;
+}
+.search {
+	float: left;
+	margin-left: 70px;
+}
+.search input {
+	float: left;
+	width: 340px;
+	height: 40px;
+	border: 1px solid #00a4ff;
+	border-right: 0;
+	padding-left: 20px;
+	color: #ccc;
+}
+.search button {
+	float: left;
+	width: 50px;
+	height: 42px;
+	background: url(images/btn.png);
+}
+.user {
+	float: left;
+	height: 42px;
+	line-height: 42px;
+	margin-left: 30px;
+	font-size: 14px;
+	color: #666;
+}
+/*banner start*/
+.banner {
+	height: 420px;
+	background: #1c036c url(images/banner2.jpg) no-repeat top center;
+}
+.subnav {
+	float: left;
+	width: 150px;
+	height: 420px;
+	padding: 0 20px;
+	/*背景半透明*/
+	background: rgba(0, 0, 0, .3);
+}
+.subnav li {
+	height: 45px;
+	line-height: 45px;
+}
+.subnav li a {
+	color: #fff;
+	font-size: 14px;
+	text-decoration: none;
+}
+.subnav li a:hover {
+	color: #00b4ff;
+}
+.subnav  span {
+	float: right;
+}
+.course {
+	/*因为course 子盒子有了浮动，则就不会外边距塌陷的问题了*/
+	float: right;
+	width: 228px;
+	height: 300px;
+	background-color: #fff;
+	margin-top: 50px;
+}
+.course-hd {
+	height: 48px;
+	background-color: #9bceea;
+	font-size: 18px;
+	text-align: center;
+	line-height: 48px;
+	color: #fff;
+	/*文字加粗*/
+	/*font-weight: bold;*/
+	font-weight: 700;
+}
+.course-bd {
+	/*没有宽度的盒子 padding 不会撑开盒子*/
+	padding: 0 15px;
+}
+.course-bd ul {
+	/*外边距塌陷的问题
+	margin-top: 10px;*/
+	padding-top: 10px;
+}
+.course-bd li {
+	/*行高等与高度 只能让单行文本垂直居中*/
+	height: 50px;
+	border-bottom: 1px solid #ccc;
+	margin-top: 10px;
+}
+.course-bd li h4 {
+	font-size: 14px;
+	color: #4e4e4e;
+}
+.course-bd li p {
+	font-size: 12px;
+	color: #a5a5a5;
+}
+.all {
+	display: block;
+	height: 38px;
+	border: 1px solid #00a4ff;
+	margin-top: 10px;
+	font-size: 16px;
+	color:  #00a4ff;
+	text-align: center;
+	line-height: 38px;
+}
+.all:hover {
+	background-color: #00a4ff;
+	color: #fff;
+}
+/*banner end*/
+/*goods start*/
+.goods {
+	height: 60px;
+	background-color: #fff;
+	margin-top: 10px;
+	/*利用行高可以继承的特性*/
+	line-height: 60px;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+}
+.goods h3 {
+	float: left;
+	margin: 0 30px;
+	font-size: 16px;
+	color: #00a4ff;
+
+}
+.goods-item {
+	float: left;
+	color: #bfbfbf;
+}
+.goods-item a {
+	font-size: 16px;
+	color: #050505;
+	margin: 0 30px;
+}
+.mod {
+	float: right;
+	margin-right: 30px;
+	font-size: 14px;
+	color: #00a4ff;
+}
+/*goods end*/
+/*box start*/
+.box {
+	margin-top: 15px;
+}
+.box-hd {
+	height: 60px;
+	line-height: 60px;
+	/*background-color: pink;*/
+}
+.box-hd h3 {
+	float: left;
+	font-size: 20px;
+	color: #494949;
+	/*让粗体不加粗 400 == normal*/
+	font-weight: 400; 
+}
+.box-hd a {
+	float: right;
+	margin-right: 30px;
+	font-size: 12px;
+	color: #a5a5a5;
+
+}
+.box-bd {
+	/*这个盒子一定不要给高度 因为我们可能放一行 也可能是2行 或者n行*/
+	/*宽度呢？ 呵呵*/
+	/*box-bd 宽度 超过了 版心 1200 是可以的，就就解决了问题*/
+	width: 1215px;
+}
+.box-bd li {
+	position: relative;
+	float: left;
+	width: 228px;
+	height: 270px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	background-color: #fff;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+}
+.box-bd li img {
+	width: 100%;
+}
+.box-bd .hot {
+	position: absolute;
+	top: 0;
+	right: -4px;
+	width: 40px;
+}
+.box-bd li h4 {
+	margin: 20px;
+	font-size: 14px;
+	color: #050505;
+	font-weight: 400;
+}
+.box-bd li p {
+	margin: 0 20px;
+	font-size: 12px;
+	color: #999;
+}
+.box-bd p span {
+	color: orange;
+}
+/*box end */
+/*footer*/
+.footer {
+	height: 385px;
+	padding-top: 30px;
+	background-color: #fff;
+}
+.copyright {
+	float: left;
+}
+.copyright p {
+	font-size: 12px;
+	color: #666;
+	margin: 20px 0 15px 0;
+}
+.app {
+	display: block;
+	width: 118px;
+	height: 34px;
+	border: 1px solid #00a4ff;
+	text-align: center;
+	line-height: 34px;
+	font-size: 16px;
+	color: #00a4ff;
+}
+.links {
+	float: right;
+}
+.links  dl {
+	float: left;
+	margin-left: 100px;
+}
+.links  dt {
+	height: 35px;
+	font-size: 16px;
+	color: #333;
+}
+.links  dd a {
+	font-size: 12px;
+	color: #333;
+}
+.links  dd a:hover {
+	color: #004aff;
+}

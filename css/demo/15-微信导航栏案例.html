@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>微信导航栏案例</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+		}
+		body {
+			background: url(images/wx.jpg) repeat-x;
+		}
+		.nav {
+			margin-top: 20px;
+		}
+		.nav li {
+			float: left;
+			margin: 0 5px;
+		}
+		.nav a {
+			display: inline-block;
+			height: 33px;
+			background: url(images/to.png) no-repeat;
+			padding-left: 15px;
+			color: #fff;
+			line-height: 33px;
+			font-size: 14px;
+		}
+		.nav a span {
+			display: inline-block;
+			height: 33px;
+			background: url(images/to.png) no-repeat right;
+			padding-right: 15px;
+		}
+		/*鼠标经过了a 链接首先换背景图片 然后 链接里面的span 也要换*/
+		/*.nav a:hover {
+			background-image: url(images/ao.png);
+		}
+		.nav a:hover span {
+			background-image: url(images/ao.png);
+		}*/
+		.nav a:hover,
+		.nav a:hover span {
+			background-image: url(images/ao.png);
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li>
+				<a href="#">
+					<span>首页</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span>帮助与反馈</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span>公众平台</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span>开放平台</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span>三个字</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

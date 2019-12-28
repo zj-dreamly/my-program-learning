@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			border: 1px solid red;
+		}
+		div img {
+			/*因为默认的是基线对齐，所有底册有空白缝隙*/
+			/*1. 只要不是 基线对齐就好了*/
+			/*vertical-align: baseline;*/
+			/*vertical-align: bottom;*/
+			/*vertical-align: middle;*/
+			/*2. 块级元素来说 vertical-align:  是无效的  就不会有基线对齐的问题了*/
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="images/3.jpg" alt="">
+	</div>
+</body>
+</html>
