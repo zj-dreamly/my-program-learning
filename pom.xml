@@ -38,7 +38,7 @@
         <module>java</module>
         <module>html</module>
         <module>css</module>
-        <module><![CDATA[html5&css3]]></module>
+        <module>html5andcss3</module>
     </modules>
 
     <licenses>
