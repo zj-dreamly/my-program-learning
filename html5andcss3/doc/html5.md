@@ -29,12 +29,12 @@
 
  2. 新增了那些语义化标签
 
-- `header`   ---  头部标签
-- `nav`        ---  导航标签
-- `article` ---   内容标签
-- `section` ---   块级标签
-- `aside`     ---   侧边栏标签
-- `footer`   ---   尾部标签    ​
+- `header`：头部标签
+- `nav`：导航标签
+- `article`：内容标签
+- `section`：块级标签
+- `aside`：侧边栏标签
+- `footer`：尾部标签    ​
 
     <img src="images\yuyibq.png">
 
@@ -50,8 +50,8 @@
 
 1.  多媒体标签有两个，分别是
 
-- 音频  -- `audio`
-- 视频  -- `video`
+- 音频：`audio`
+- 视频：`video`
 
 2.  `audio` 标签说明
 
