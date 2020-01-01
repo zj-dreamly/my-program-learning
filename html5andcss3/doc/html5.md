@@ -25,62 +25,54 @@
 
       总的来说：`HTML5` 已经是大势所趋
 
-
-
 ###### 二、`HTML5 ` 新增标签
 
  1.  什么是语义化
 
  2. 新增了那些语义化标签
 
-    - `header`   ---  头部标签
-    - `nav`        ---  导航标签
-    - `article` ---   内容标签
-    - `section` ---   块级标签
-    - `aside`     ---   侧边栏标签
-    - `footer`   ---   尾部标签
-
-    ​
+- `header`   ---  头部标签
+- `nav`        ---  导航标签
+- `article` ---   内容标签
+- `section` ---   块级标签
+- `aside`     ---   侧边栏标签
+- `footer`   ---   尾部标签    ​
 
     <img src="images\yuyibq.png">
 
  3.  使用语义化标签的注意
 
-    - 语义化标签主要针对搜索引擎
-    - 新标签可以使用一次或者多次
-    - 在 `IE9` 浏览器中，需要把语义化标签都转换为块级元素
-    - 语义化标签，在移动端支持比较友好，
-    - 另外，`HTML5` 新增的了很多的语义化标签，随着课程深入，还会学习到其他的
+- 语义化标签主要针对搜索引擎
+- 新标签可以使用一次或者多次
+- 在 `IE9` 浏览器中，需要把语义化标签都转换为块级元素
+- 语义化标签，在移动端支持比较友好，
+- 另外，`HTML5` 新增的了很多的语义化标签，随着课程深入，还会学习到其他的
 
 ###### 三、多媒体音频标签
 
 1.  多媒体标签有两个，分别是
 
-   - 音频  -- `audio`
-   - 视频  -- `video`
+- 音频  -- `audio`
+- 视频  -- `video`
 
 2.  `audio` 标签说明
 
-   - 可以在不使用标签的情况下，也能够原生的支持音频格式文件的播放，
-   - 但是：播放格式是有限的
+- 可以在不使用标签的情况下，也能够原生的支持音频格式文件的播放，
+- 但是：播放格式是有限的
 
 3. audio 支持的音频格式
 
-   - audio 目前支持三种格式
-
-     ​
+- audio 目前支持三种格式    ​
 
    <img src="images\audio.png">
 
-4. audio 的参数
-
-   ​
+4. audio 的参数 ​
 
    <img src="images\audiocanshu.png">
 
 5、audio 代码演示
 
-```css
+```html
 <body>
   <!-- 注意：在 chrome 浏览器中已经禁用了 autoplay 属性 -->
   <!-- <audio src="./media/snow.mp3" controls autoplay></audio> -->
@@ -99,8 +91,6 @@
 1. video 视频标签
 
    - 目前支持三种格式
-
-   ​
 
    <img src="images\vedio.png">
 
@@ -131,11 +121,11 @@
    ```
 
 5.  多媒体标签总结
-   - 音频标签与视频标签使用基本一致
-   - 多媒体标签在不同浏览器下情况不同，存在兼容性问题
-   - 谷歌浏览器把音频和视频标签的自动播放都禁止了
-   - 谷歌浏览器中视频添加 muted 标签可以自己播放
-   - 注意：重点记住使用方法以及自动播放即可，其他属性可以在使用时查找对应的手册
+- 音频标签与视频标签使用基本一致
+- 多媒体标签在不同浏览器下情况不同，存在兼容性问题
+- 谷歌浏览器把音频和视频标签的自动播放都禁止了
+- 谷歌浏览器中视频添加 muted 标签可以自己播放
+- 注意：重点记住使用方法以及自动播放即可，其他属性可以在使用时查找对应的手册
 
 ###### 五、新增 input 标签
 
@@ -204,9 +194,7 @@
 
 1. 属性列表
 
-     <img src="images\jiegouweilei.png">
-
-   ​
+     <img src="images\jiegouweilei.png">​
 
 2. 代码演示
 
@@ -246,7 +234,8 @@
 
 2.  代码演示
 
-   ```css
+ ```html
+ 
    <style>
      /* 偶数 */
      ul li:nth-child(even) {
@@ -287,14 +276,15 @@
      ul li:nth-child(-n + 5) {
        background-color: tan;
      }
+     
    </style>
-   ```
+```
 
 ###### 十一、`nth-child` 和  `nt-of-type` 的区别
 
 1.  代码演示
 
-   ```css
+   ```html
    <style>
      div :nth-child(1) {
        background-color: lightblue;
@@ -338,7 +328,7 @@
 
 3. 代码演示
 
-   ```css
+   ```html
    <style>
        div {
          width: 100px;
@@ -401,7 +391,7 @@
    - x 就是 x 轴上水平移动
    - y 就是 y 轴上水平移动
 
-   ```css
+   ```html
    transform: translate(x, y)
    transform: translateX(n)
    transfrom: translateY(n)
@@ -450,7 +440,7 @@ div {
 
 2.  `rotate` 语法
 
-   ```css
+   ```html
    /* 单位是：deg */
    transform: rotate(度数) 
    ```
