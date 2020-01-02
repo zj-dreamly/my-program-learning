@@ -1,0 +1,53 @@
+
+body {
+	padding: 50px;
+}
+
+.v-code {
+	width: 145px;
+    height: 240px;
+    padding-top: 47px;
+    float: left;
+    position: relative;
+    background: url(../images/index_z_71df05e.png);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+	
+}
+
+.v-code .erweima {
+	display: block;
+	margin: 0 auto;
+	width: 107px;
+}
+
+.v-code .line {
+	position: absolute;
+    left: 12px;
+    top: 45px;
+    -webkit-animation: mainbarcode 4s linear infinite;
+    -moz-animation: mainbarcode 4s linear infinite;
+    -ms-animation: mainbarcode 4s linear infinite;
+    animation: mainbarcode 4s linear infinite;
+}
+
+@keyframes mainbarcode {
+	0% {
+	    -webkit-transform: translate3d(0,0,0);
+	    -moz-transform: translate3d(0,0,0);
+	    -ms-transform: translate3d(0,0,0);
+	    transform: translate3d(0,0,0);
+	}
+	50% {
+	    -webkit-transform: translate3d(0,100px,0);
+	    -moz-transform: translate3d(0,100px,0);
+	    -ms-transform: translate3d(0,100px,0);
+	    transform: translate3d(0,100px,0);
+	}
+	100% {
+	    -webkit-transform: translate3d(0,0,0);
+	    -moz-transform: translate3d(0,0,0);
+	    -ms-transform: translate3d(0,0,0);
+	    transform: translate3d(0,0,0);
+	}
+}
