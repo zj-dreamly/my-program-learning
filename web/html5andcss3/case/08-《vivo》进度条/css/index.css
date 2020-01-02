@@ -1,0 +1,65 @@
+
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: url(../images/vivo-banner-z3ys-bg.jpg) no-repeat center top;
+    background-size: cover;
+    position: relative;
+}
+
+.progress {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: auto;
+    bottom: 40px;
+    text-align: center;
+}
+
+.progress li {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin: 0 4px;
+    text-align: center;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.progress li span {
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    left: 50%;
+    margin-left: -20px;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .2);
+    -webkit-transition: all .3s .1s ease-out;
+    transition: all .3s .1s ease-out;
+}
+
+.progress li span::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #666;
+    -webkit-transition: all .3s .1s ease-out;
+    transition: all .3s .1s ease-out;
+}
+
+.progress li:hover span {
+    height: 5px;
+}
+
+.progress li:hover span::after {
+    width: 100%;
+    -webkit-transition: width 5s ease;
+    transition: width 5s ease;
+}

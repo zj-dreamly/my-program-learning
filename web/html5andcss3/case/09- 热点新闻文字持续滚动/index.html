@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body {
+            width: 100%;
+            height: 100%;
+        }
+        .container {
+            max-width: 640px;
+            height: 100%;
+            margin: 0 auto;
+            background-color: #f8f8f8;
+        }
+        .gonggao {
+            padding-top: 80px;
+        }
+        .gg-pic {
+            float: left;
+            width: 100px;
+            height: 40px;
+            background-color: sandybrown;
+        }
+        .gg-text {
+            margin-left: 100px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            font-family: 'Microsoft Yahei';
+            overflow: hidden;
+        }
+        .gg-info {
+            width: 200%;
+            position: relative;
+            animation: gonggao 4s linear infinite;
+        }
+        .gg-info p {
+            position: absolute;
+            top: 0;
+            width: 50%;
+        }
+        .gg-info p:first-child {
+            left: 0;
+        }
+        .gg-info p:last-child {
+            left: 50%;
+        }
+
+        @keyframes gonggao {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="gonggao">
+            <div class="gg-pic"></div>
+            <div class="gg-text">
+                <div class="gg-info">
+                    <p>从前有座山，山里有座庙，庙里有个页面找呀找不到 </p>
+                    <p>从前有座山，山里有座庙，庙里有个页面找呀找不到 </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

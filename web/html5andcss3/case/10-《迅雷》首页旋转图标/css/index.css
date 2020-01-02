@@ -1,0 +1,169 @@
+
+
+header {
+	position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+}
+
+header:hover {
+	background-color: rgba(0,0,0,.8);
+}
+
+.header-inner {
+	max-width: 1200px;
+    margin: 0 auto;
+}
+
+.xl-logo {
+    float: left;
+    margin-top: 14px;
+    width: 78px;
+    height: 37px;
+}
+
+.xl-logo img {
+	width: 100%;
+	height: 100%;
+}
+
+.xl-nav {
+	text-align: right;
+	white-space: nowrap;
+}
+
+.xl-nav li {
+	position: relative;
+    display: inline-block;
+    margin-left: 2.5%;
+}
+
+.xl-nav li a {
+	display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    padding: 0 10px;
+    line-height: 64px;
+}
+
+.xl-nav li a::after {
+	opacity: 0;
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    background-color: #fff;
+}
+
+.xl-nav li a:hover::after {
+	opacity: 1;
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+.xl-nav li.active a::after {
+	opacity: 1;
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+
+
+
+.home-inner {
+	position: relative;
+    width: 100%;
+    height: 1080px;
+    overflow: hidden;
+    margin-bottom: -152px;
+    background-color: #080325;
+    zoom: 0.6;
+}
+
+.home-inner-c {
+	position: relative;
+    top: 50%;
+    left: 50%;
+    margin: -540px 0 0 -960px;
+    width: 1920px;
+    height: 1080px;
+    background-image: url(../images/banner_bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+.banner-earth {
+	position: absolute;
+    top: 82px;
+    left: 0;
+    right: 0;
+    display: block;
+    margin: auto;
+    background: url(../images/earth01.png) no-repeat;
+    width: 730px;
+    height: 730px;
+}
+
+.banner-line {
+	position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 750px;
+    height: 750px;
+    margin: auto;
+}
+
+.banner-line > i {
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    margin: auto;
+}
+
+.circle01 {
+	background-image: url(../images/spr_bannerPathway.png);
+    background-position: -2436px 0px;
+    background-repeat: no-repeat;
+    width: 719px;
+    height: 719px;
+    -webkit-animation: ani_line 30s linear infinite;
+    animation: ani_line 30s linear infinite;
+}
+
+.circle02 {
+	background-image: url(../images/spr_bannerPathway.png);
+    background-position: -2436px -724px;
+    background-repeat: no-repeat;
+    width: 648px;
+    height: 674px;
+    animation: ani_line 3s steps(180) infinite reverse;
+}
+
+@keyframes ani_line {
+	0% {
+	    -webkit-transform: none;
+	    transform: none;
+	}
+	100% {
+	    -webkit-transform: rotate(360deg);
+	    transform: rotate(360deg);
+	}
+}
