@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background-color: skyblue;
+		}
+		div {
+			width: 200px;
+			height: 400px;
+			background-color: #fff;
+			border-left: 200px solid #000;
+			margin: 50px auto;
+			border-radius: 50%;
+
+			transition: all .6s ease-in-out;
+            -webkit-transition: all .6s ease-in-out;
+            -moz-transition: all .6s ease-in-out;
+            -o-transition: all .6s ease-in-out;
+		}
+		div::before,div::after {
+			content: "";
+			display: block;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			margin-left: -100px;
+		}
+		div::before {
+			background-color: #fff;
+			border: 75px solid #000;
+		}
+		div::after {
+			background-color: #000;
+			border: 75px solid #fff;
+		}
+		div:hover {
+			transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
