@@ -9,7 +9,6 @@
     <groupId>com.github.zj.dreamly</groupId>
     <artifactId>my-program-learning</artifactId>
     <version>1.2.1</version>
-    <name>dreamly-tool</name>
     <description>我的编程学习之路</description>
     <url>https://github.com/zj-dreamly/my-program-learning.git</url>
 
@@ -27,25 +26,10 @@
         <spring-javaformat.version>0.0.9</spring-javaformat.version>
     </properties>
 
-    <!--发布中央仓库使用-->
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
-
     <modules>
         <module>java</module>
         <module>web</module>
     </modules>
-
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
 
     <dependencies>
         <dependency>
