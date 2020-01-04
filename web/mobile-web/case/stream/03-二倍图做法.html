@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 我们需要一个50*50像素（css像素）的图片 直接放到我们的iphone8 里面会放大2倍  100* 100 就会模糊 */
+        /* 我们采取的是 放一个 100* 100 图片  然后手动的把这个图片 缩小为 50* 50 （css像素） */
+        /* 我们准备的图片 比我们实际需要的大小 大2倍，这就方式就是 2倍图 */
+        
+        img:nth-child(2) {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 模糊的 -->
+    <img src="images/apple50.jpg" alt="">
+    <!-- 我们采取2倍图 -->
+    <img src="images/apple100.jpg" alt="">
+</body>
+
+</html>
