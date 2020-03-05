@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 类的继承
+        // class Father {
+        //     constructor() {
+
+        //     }
+        //     money() {
+        //         console.log(100);
+
+        //     }
+        // }
+        // class Son extends Father {
+
+        // }
+        // var son = new Son();
+        // son.money();
+        class Father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                console.log(this.x + this.y);
+
+            }
+        }
+        class Son extends Father {
+            constructor(x, y) {
+                super(x, y); //调用了父类中的构造函数
+            }
+        }
+        var son = new Son(1, 2);
+        var son1 = new Son(11, 22);
+        son.sum();
+        son1.sum();
+    </script>
+</body>
+
+</html>
