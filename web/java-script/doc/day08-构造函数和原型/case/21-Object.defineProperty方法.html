@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Object.defineProperty() 定义新属性或修改原有的属性
+        var obj = {
+            id: 1,
+            pname: '小米',
+            price: 1999
+        };
+        // 1. 以前的对象添加和修改属性的方式
+        // obj.num = 1000;
+        // obj.price = 99;
+        // console.log(obj);
+        // 2. Object.defineProperty() 定义新属性或修改原有的属性
+        Object.defineProperty(obj, 'num', {
+            value: 1000,
+            enumerable: true
+        });
+        console.log(obj);
+        Object.defineProperty(obj, 'price', {
+            value: 9.9
+        });
+        console.log(obj);
+        Object.defineProperty(obj, 'id', {
+            // 如果值为false 不允许修改这个属性值 默认值也是false
+            writable: false,
+        });
+        obj.id = 2;
+        console.log(obj);
+        Object.defineProperty(obj, 'address', {
+            value: '中国山东蓝翔技校xx单元',
+            // 如果只为false 不允许修改这个属性值 默认值也是false
+            writable: false,
+            // enumerable 如果值为false 则不允许遍历, 默认的值是 false
+            enumerable: false,
+            // configurable 如果为false 则不允许删除这个属性 不允许在修改第三个参数里面的特性 默认为false
+            configurable: false
+        });
+        console.log(obj);
+        console.log(Object.keys(obj));
+        delete obj.address;
+        console.log(obj);
+        delete obj.pname;
+        console.log(obj);
+        Object.defineProperty(obj, 'address', {
+            value: '中国山东蓝翔技校xx单元',
+            // 如果只为false 不允许修改这个属性值 默认值也是false
+            writable: true,
+            // enumerable 如果值为false 则不允许遍历, 默认的值是 false
+            enumerable: true,
+            // configurable 如果为false 则不允许删除这个属性 默认为false
+            configurable: true
+        });
+        console.log(obj.address);
+    </script>
+</body>
+
+</html>
