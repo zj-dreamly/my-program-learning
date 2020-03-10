@@ -28,6 +28,7 @@
     <modules>
         <module>java</module>
         <module>web</module>
+        <module>database</module>
     </modules>
 
     <dependencies>
