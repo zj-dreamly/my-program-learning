@@ -21,7 +21,7 @@ const http = require('http');
 const url = require('url');
 const querystring = require('querystring');
 
-require('./model/index.js');
+require('./model');
 const User = require('./model/user');
 
 
