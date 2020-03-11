@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>学生档案</title>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>学生档案</legend>
+			<label>
+				姓名: <input class="normal" type="text" autofocus placeholder="请输入姓名">
+			</label>
+			<label>
+				年龄: <input class="normal"  type="text" placeholder="请输入年龄">
+			</label>
+			<label>
+				性别: 
+				<input type="radio" value="0"> 男
+				<input type="radio" value="1"> 女
+			</label>
+			<label>
+				邮箱地址: <input class="normal" type="text" placeholder="请输入邮箱地址">
+			</label>
+			<label>
+				爱好: 
+				<input type="checkbox" value="0"> 敲代码
+				<input type="checkbox" value="1"> 打篮球
+				<input type="checkbox" value="1"> 睡觉
+			</label>
+			<label>
+				所属学院: 
+				<select class="normal">
+					<option value="前端与移动开发">前端与移动开发</option>
+					<option value="PHP">PHP</option>
+					<option value="JAVA">JAVA</option>
+					<option value="Android">Android</option>
+					<option value="IOS">IOS</option>
+					<option value="UI设计">UI设计</option>
+					<option value="C++">C++</option>
+				</select>
+			</label>
+			<label>
+				入学日期: <input type="date" class="normal">
+			</label>
+			<label class="btn">
+				<input type="submit" value="提交" class="normal">
+			</label>
+		</fieldset>
+	</form>
+</body>
+</html>

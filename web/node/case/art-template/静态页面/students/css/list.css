@@ -1,0 +1,36 @@
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, td, th {
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #CCC;
+}
+
+caption {
+	font-weight: bold;
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+table {
+	width: 960px;
+	margin: 50px auto;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #000;
+}

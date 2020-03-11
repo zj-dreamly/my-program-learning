@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 标准语法 -->
+	<p>{{ name }}</p>
+	<p>{{ 1 + 1 }}</p>
+	<p>{{ 1 + 1 == 2 ? '相等' : '不相等' }}</p>
+	<p>{{ content }}</p>
+	<p>{{@ content }}</p>
+	<!-- 原始语法 -->
+	<p><%= name %></p>
+	<p><%= 1 + 2%></p>
+	<p><%= 1 + 1 == 2 ? '相等' : '不相等' %></p>
+	<p><%= content%></p>
+	<p><%- content%></p>
+</body>
+</html>
