@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model='msg'>
+    <div>{{msg | upper}}</div>
+    <div>{{msg | upper | lower}}</div>
+    <div :abc='msg | upper'>测试数据</div>
+  </div>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript">
+    /*
+      过滤器
+      1、可以用与插值表达式和属性绑定
+      2、支持级联操作
+    */
+    // Vue.filter('upper', function(val) {
+    //   return val.charAt(0).toUpperCase() + val.slice(1);
+    // });
+    Vue.filter('lower', function(val) {
+      return val.charAt(0).toLowerCase() + val.slice(1);
+    });
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: ''
+      },
+      filters: {
+        upper: function(val) {
+          return val.charAt(0).toUpperCase() + val.slice(1);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-color='msg'>
+    <input type="text" v-focus>
+  </div>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript">
+    /*
+      自定义指令-局部指令
+    */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: {
+          color: 'red'
+        }
+      },
+      methods: {
+        handle: function(){
+          
+        }
+      },
+      directives: {
+        color: {
+          bind: function(el, binding){
+            el.style.backgroundColor = binding.value.color;
+          }
+        },
+        focus: {
+          inserted: function(el) {
+            el.focus();
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

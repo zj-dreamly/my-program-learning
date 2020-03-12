@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>{{reverseString}}</div>
+    <div>{{reverseString}}</div>
+    <div>{{reverseMessage()}}</div>
+    <div>{{reverseMessage()}}</div>
+  </div>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript">
+    /*
+      计算属性与方法的区别:计算属性是基于依赖进行缓存的，而方法不缓存
+    */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Nihao',
+        num: 100
+      },
+      methods: {
+        reverseMessage: function(){
+          console.log('methods')
+          return this.msg.split('').reverse().join('');
+        }
+      },
+      computed: {
+        reverseString: function(){
+          console.log('computed')
+          // return this.msg.split('').reverse().join('');
+          var total = 0;
+          for(var i=0;i<=this.num;i++){
+            total += i;
+          }
+          return total;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

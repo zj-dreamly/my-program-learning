@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <span>名：</span>
+      <span>
+        <input type="text" v-model='firstName'>
+      </span>
+    </div>
+    <div>
+      <span>姓：</span>
+      <span>
+        <input type="text" v-model='lastName'>
+      </span>
+    </div>
+    <div>{{fullName}}</div>
+  </div>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript">
+    /*
+      侦听器
+    */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        firstName: 'Jim',
+        lastName: 'Green',
+        // fullName: 'Jim Green'
+      },
+      computed: {
+        fullName: function(){
+          return this.firstName + ' ' + this.lastName;
+        }
+      },
+      watch: {
+        // firstName: function(val) {
+        //   this.fullName = val + ' ' + this.lastName;
+        // },
+        // lastName: function(val) {
+        //   this.fullName = this.firstName + ' ' + val;
+        // }
+      }
+    });
+  </script>
+</body>
+</html>
