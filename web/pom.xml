@@ -20,6 +20,7 @@
         <module>web-apis</module>
         <module>node</module>
         <module>ajax</module>
+        <module>vue</module>
     </modules>
 
 

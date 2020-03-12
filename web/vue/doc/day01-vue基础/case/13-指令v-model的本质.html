@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>{{msg}}</div>
+    <input type="text" v-bind:value="msg" v-on:input='handle'>
+    <input type="text" v-bind:value="msg" v-on:input='msg=$event.target.value'>
+    <input type="text" v-model='msg'>
+  </div>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript">
+    /*
+      v-model指令的本质
+
+    */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello'
+      },
+      methods: {
+        handle: function(event){
+          // 使用输入域中的最新的数据覆盖原来的数据
+          this.msg = event.target.value;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

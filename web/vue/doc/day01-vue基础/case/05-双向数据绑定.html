@@ -1,0 +1,30 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{msg}}</div>
+      <div>
+        <input type="text" v-model='msg'>
+      </div>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+      /*
+        双向数据绑定
+        1、从页面到数据
+        2、从数据到页面
+      */
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: 'Hello Vue'
+        }
+      });
+    </script>
+  </body>
+  </html>
