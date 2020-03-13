@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <base-layout>
+      <p slot='header'>标题信息</p>
+      <p>主要内容1</p>
+      <p>主要内容2</p>
+      <p slot='footer'>底部信息信息</p>
+    </base-layout>
+
+    <base-layout>
+      <template slot='header'>
+        <p>标题信息1</p>
+        <p>标题信息2</p>
+      </template>
+      <p>主要内容1</p>
+      <p>主要内容2</p>
+      <template slot='footer'>
+        <p>底部信息信息1</p>
+        <p>底部信息信息2</p>
+      </template>
+    </base-layout>
+  </div>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript">
+    /*
+      具名插槽
+    */
+    Vue.component('base-layout', {
+      template: `
+        <div>
+          <header>
+            <slot name='header'></slot>
+          </header>
+          <main>
+            <slot></slot>
+          </main>
+          <footer>
+            <slot name='footer'></slot>
+          </footer>
+        </div>
+      `
+    });
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        
+      }
+    });
+  </script>
+</body>
+</html>
