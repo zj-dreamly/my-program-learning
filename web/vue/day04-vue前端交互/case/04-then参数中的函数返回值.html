@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+    /*
+      then参数中的函数返回值
+    */
+    function queryData(url) {
+      return new Promise(function(resolve, reject){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState != 4) return;
+          if(xhr.readyState == 4 && xhr.status == 200) {
+            // 处理正常的情况
+            resolve(xhr.responseText);
+          }else{
+            // 处理异常情况
+            reject('服务器错误');
+          }
+        };
+        xhr.open('get', url);
+        xhr.send(null);
+      });
+    }
+    queryData('http://localhost:3000/data')
+      .then(function(data){
+        return queryData('http://localhost:3000/data1');
+      })
+      .then(function(data){
+        return new Promise(function(resolve, reject){
+          setTimeout(function(){
+            resolve(123);
+          },1000)
+        });
+      })
+      .then(function(data){
+        return 'hello';
+      })
+      .then(function(data){
+        console.log(data)
+      })
+
+  </script>
+</body>
+</html>

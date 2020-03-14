@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script type="text/javascript" src="js/axios.js"></script>
+  <script type="text/javascript">
+    /*
+      async/await处理多个异步任务
+    */
+    axios.defaults.baseURL = 'http://localhost:3000';
+
+    async function queryData() {
+      var info = await axios.get('async1');
+      var ret = await axios.get('async2?info=' + info.data);
+      return ret.data;
+    }
+
+    queryData().then(function(data){
+      console.log(data)
+    })
+  </script>
+</body>
+</html>

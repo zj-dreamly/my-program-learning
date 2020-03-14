@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+    /*
+      Promise常用API-对象方法
+    */
+    // console.dir(Promise)
+    function queryData(url) {
+      return new Promise(function(resolve, reject){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState != 4) return;
+          if(xhr.readyState == 4 && xhr.status == 200) {
+            // 处理正常的情况
+            resolve(xhr.responseText);
+          }else{
+            // 处理异常情况
+            reject('服务器错误');
+          }
+        };
+        xhr.open('get', url);
+        xhr.send(null);
+      });
+    }
+
+    var p1 = queryData('http://localhost:3000/a1');
+    var p2 = queryData('http://localhost:3000/a2');
+    var p3 = queryData('http://localhost:3000/a3');
+    // Promise.all([p1,p2,p3]).then(function(result){
+    //   console.log(result)
+    // })
+    Promise.race([p1,p2,p3]).then(function(result){
+      console.log(result)
+    })
+  </script>
+</body>
+</html>

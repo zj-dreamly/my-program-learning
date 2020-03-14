@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script type="text/javascript">
+    /*
+      Promise常用API-实例方法
+    */
+    // console.dir(Promise);
+    function foo() {
+      return new Promise(function(resolve, reject){
+        setTimeout(function(){
+          // resolve(123);
+          reject('error');
+        }, 100);
+      })
+    }
+    // foo()
+    //   .then(function(data){
+    //     console.log(data)
+    //   })
+    //   .catch(function(data){
+    //     console.log(data)
+    //   })
+    //   .finally(function(){
+    //     console.log('finished')
+    //   });
+
+    // --------------------------
+    // 两种写法是等效的
+    foo()
+      .then(function(data){
+        console.log(data)
+      },function(data){
+        console.log(data)
+      })
+      .finally(function(){
+        console.log('finished')
+      });
+  </script>
+</body>
+</html>
