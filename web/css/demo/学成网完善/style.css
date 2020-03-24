@@ -202,7 +202,7 @@ a {
 	margin-top: 10px;
 	/*利用行高可以继承的特性*/
 	line-height: 60px;
-	box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, .3);
 }
 .goods h3 {
 	float: left;
