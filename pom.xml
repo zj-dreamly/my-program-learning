@@ -30,6 +30,7 @@
         <module>web</module>
         <module>database</module>
         <module>android</module>
+        <module>groovy</module>
     </modules>
 
     <dependencies>
