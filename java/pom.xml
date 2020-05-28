@@ -24,6 +24,7 @@
         <module>guava</module>
         <module>jdk8</module>
         <module>concurrent</module>
+        <module>netty</module>
     </modules>
 
 </project>
