@@ -1,0 +1,1 @@
+-Dio.netty.leakDetection.level=PARANOID
