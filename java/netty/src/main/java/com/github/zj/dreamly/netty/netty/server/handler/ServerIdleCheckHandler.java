@@ -9,18 +9,19 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class ServerIdleCheckHandler extends IdleStateHandler {
-    public ServerIdleCheckHandler() {
-        super(10, 0, 0, TimeUnit.SECONDS);
-    }
+	public ServerIdleCheckHandler() {
+		super(10, 0, 0, TimeUnit.SECONDS);
+	}
 
-    @Override
-    protected void channelIdle(ChannelHandlerContext ctx, IdleStateEvent evt) throws Exception {
-        if (evt == IdleStateEvent.FIRST_READER_IDLE_STATE_EVENT) {
-            log.info("idle check happen, so close the connection");
-            ctx.close();
-            return;
-        }
+	@Override
+	protected void channelIdle(ChannelHandlerContext ctx, IdleStateEvent evt) throws Exception {
+		if (evt == IdleStateEvent.FIRST_READER_IDLE_STATE_EVENT) {
+			log.info("idle check happen, so close the connection");
+			ctx.close();
+			return;
+		}
 
-        super.channelIdle(ctx, evt);
-    }
+		super.channelIdle(ctx, evt);
+	}
+
 }
