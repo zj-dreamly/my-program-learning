@@ -20,11 +20,12 @@
 #### [并发集合测试](https://github.com/zj-dreamly/my-program-learning/blob/master/java/concurrent/doc/%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88.md)
 #### [java高并发知识点详细汇总](https://github.com/zj-dreamly/my-program-learning/blob/master/java/concurrent/doc/java%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93.md)
 
+### my-work-doc
+这里记录了我工作遇到了问题总结，希望能给看到的人一点帮助。
 ### guava
 ### java8
 ### IO
 ### socket
 ### netty
-### android
 ### web前端
 ### IM
