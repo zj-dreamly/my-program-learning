@@ -1,1 +1,0 @@
-{{ dateFormat(time, 'yyyy-mm-dd')}}
