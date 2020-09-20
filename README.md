@@ -11,7 +11,6 @@
 #### [springIOC初始化之refresh方法分析](https://github.com/zj-dreamly/my-program-learning/blob/master/java/spring-annotation/doc/springIOC%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B9%8Brefresh%E6%96%B9%E6%B3%95%E5%88%86%E6%9E%90.md)
 
 ### 数据结构
-#### [java版数据结构与算法](https://github.com/zj-dreamly/my-program-learning/blob/master/java/data-structure/doc/Chapter-01-watermarked.pdf)
 
 ### java高并发
 #### [多线程设计模式](https://github.com/zj-dreamly/my-program-learning/blob/master/java/concurrent/doc/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md)
@@ -21,13 +20,4 @@
 #### [java高并发知识点详细汇总](https://github.com/zj-dreamly/my-program-learning/blob/master/java/concurrent/doc/java%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93.md)
 
 ### my-work-doc
-这里记录了我工作遇到了问题总结，希望能给看到的人一点帮助。
-### guava
-### java8
-### IO
-
-
-### socket
-### netty
-### web前端
-### IM
+#### 这里记录了我工作遇到了问题总结，希望能给看到的人一点帮助。
