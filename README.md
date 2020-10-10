@@ -20,4 +20,6 @@
 #### [java高并发知识点详细汇总](https://github.com/zj-dreamly/my-program-learning/blob/master/java/concurrent/doc/java%E5%B9%B6%E5%8F%91%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93.md)
 
 ### my-work-doc
-#### 这里记录了我工作遇到了问题总结，希望能给看到的人一点帮助。
+> 这里记录了我工作遇到了问题总结，希望能给看到的人一点帮助。
+#### mysql
+- [mysql大文件导入失败问题](https://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/mysql/mysql%E5%A4%A7%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98.md)
