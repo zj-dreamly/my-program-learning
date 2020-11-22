@@ -27,9 +27,7 @@
 
     <modules>
         <module>java</module>
-        <module>web</module>
         <module>database</module>
-        <module>android</module>
         <module>nginx</module>
         <module>my-work-doc</module>
     </modules>
