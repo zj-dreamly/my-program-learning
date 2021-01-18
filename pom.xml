@@ -30,6 +30,7 @@
         <module>database</module>
         <module>nginx</module>
         <module>my-work-doc</module>
+        <module>mini-program</module>
     </modules>
 
     <dependencies>
