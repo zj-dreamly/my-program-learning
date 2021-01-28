@@ -1,0 +1,1 @@
+git reset HEAD  文件名
