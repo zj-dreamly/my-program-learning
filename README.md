@@ -40,7 +40,7 @@
 
 ### springboot
 #### - [pom配置阿里私服及打包](https://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/springboot/pom%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E7%A7%81%E6%9C%8D%E5%8F%8A%E6%89%93%E5%8C%85.md)
-#### - [SpringBoot-Security和restfulAPI](hhttps://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/springboot/SpringBoot-Security%E5%92%8CrestfulAPI.md)
+#### - [SpringBoot-Security和restfulAPI](https://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/springboot/SpringBoot-Security%E5%92%8CrestfulAPI.md)
 #### - [springboot启动读取外部配置文件](https://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/springboot/springboot%E5%90%AF%E5%8A%A8%E8%AF%BB%E5%8F%96%E5%A4%96%E9%83%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.md)
 #### - [启动脚本示例](https://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/springboot/%E5%90%AF%E5%8A%A8%E7%A4%BA%E4%BE%8B.md)
 #### - [跨域配置](https://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/springboot/%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE.md)
