@@ -6,6 +6,8 @@
 - 参数转对象加{}
 - 自定义组件不支持 class 样式设置，只能通过外部样式类设置.
 -  async 保证返回结果一定是 promise ，await 需要在操作数据的时候加，不操作数据的时候可以不加
+- 去除图片的边距：display: flex
+- 去除块边距：box-sizing: border-box
 
 #### 使用插槽
 
