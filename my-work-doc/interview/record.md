@@ -61,5 +61,5 @@ public Class Sington{
 }
 ```
 
-
+JDK动态代理
 
