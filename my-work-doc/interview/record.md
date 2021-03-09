@@ -61,5 +61,33 @@ public Class Sington{
 }
 ```
 
-JDK动态代理
+#### Spring AOP
+
+- AOP 代理主要分为静态代理和动态代理两大类，静态代理以 AspectJ 为代表；而动态代理则以 Spring AOP 为代表
+- 静态代理是指使用 AOP 框架提供的命令进行编译，从而在编译阶段就可生成 AOP 代理类，因此也称为编译时增强
+- 动态代理则在运行时借助于 JDK 动态代理、CGLIB 等在内存中“临时”生成 AOP 动态代理类，因此也被称为运行时增强
+
+#### 冒泡排序
+
+```java
+  public static void main(String[] args) {
+        int[] arr = {10, 8, 5, 6, 11, 7};
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }
+```
+
+
 
