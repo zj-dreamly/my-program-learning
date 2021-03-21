@@ -25,7 +25,7 @@
         <module>jdk8</module>
         <module>concurrent</module>
         <module>netty</module>
-        <module>spring</module>
+        <module>skill</module>
     </modules>
 
 </project>
