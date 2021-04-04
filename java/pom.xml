@@ -26,6 +26,7 @@
         <module>concurrent</module>
         <module>netty</module>
         <module>skill</module>
+        <module>zookeeper</module>
     </modules>
 
 </project>

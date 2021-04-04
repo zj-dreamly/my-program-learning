@@ -1,0 +1,18 @@
+[
+  {
+    "type": "add",
+    "url": "ftp://192.168.10.123/config/redis.xml",
+    "remark": "add"
+  },
+
+  {
+    "type": "update",
+    "url": "ftp://192.168.10.123/config/redis.xml",
+    "remark": "update"
+  },
+  {
+    "type": "delete",
+    "url": "",
+    "remark": "delete"
+  }
+]
