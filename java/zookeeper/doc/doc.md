@@ -220,3 +220,9 @@ zk的 acl 通过 [scheme:userId:permissions] 来构成权限列表
 - 解决watch的注册一次就失效
 - Api更加简单易用
 - 分布式锁
+
+## Dubbo
+
+- 最大程度解耦
+- 生产者消费者模式
+- zk注册中心，admin监控中心，协议支持
