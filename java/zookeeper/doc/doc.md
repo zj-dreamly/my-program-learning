@@ -226,3 +226,5 @@ zk的 acl 通过 [scheme:userId:permissions] 来构成权限列表
 - 最大程度解耦
 - 生产者消费者模式
 - zk注册中心，admin监控中心，协议支持
+
+## 分布式锁
