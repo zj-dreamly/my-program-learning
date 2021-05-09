@@ -31,6 +31,7 @@
         <module>nginx</module>
         <module>my-work-doc</module>
         <module>mini-program</module>
+        <module>basic</module>
     </modules>
 
     <dependencies>
