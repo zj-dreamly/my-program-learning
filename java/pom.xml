@@ -27,6 +27,7 @@
         <module>netty</module>
         <module>skill</module>
         <module>zookeeper</module>
+        <module>spring-thinking</module>
     </modules>
 
 </project>
