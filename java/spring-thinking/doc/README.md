@@ -321,6 +321,8 @@ BeanFactory 和 ApplicationContext 谁才是 Spring IoC 容器？
 
 思考：假设以上三种方式均在同一 Bean 中定义，那么这些方法的执行顺序是怎样？
 
+- 自上而下
+
 ### 延迟初始化 Spring Bean
 
 - Bean 延迟初始化（Lazy Initialization） 
@@ -340,6 +342,8 @@ BeanFactory 和 ApplicationContext 谁才是 Spring IoC 容器？
     - Java API：AbstractBeanDefinition#setDestroyMethodName(String)
 
 思考：假设以上三种方式均在同一 Bean 中定义，那么这些方法的执行顺序是怎样？
+
+- 自上而下
 
 ### 垃圾回收 Spring Bean
 
