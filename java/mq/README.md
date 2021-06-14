@@ -197,29 +197,65 @@
 
 #### RabbitMQ
 
-- 主备模式：一个主 / 方案，如果主节点宕机，从节点提供服务，和 ActiveMQ 利用 zookeeper 做主备一样
-
-- 远程模式：远距离通信和复制，可以实现双活的一种模式，简称 Shovel 模式，把消息进行不同数据中心的复制工作，可以跨地域的让两个 MQ 集群互联
-
-- 镜像模式：保证 100% 数据不丢失
-- 多活模式：实现异地数据复制的主流模式，因为 Shovel 模式配置比较复杂，所以一般来说，实现异地集群都是使用这种双活或者多活模型来实现
-- federation插件
+https://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/mq/rabbitmq%E5%AD%A6%E4%B9%A0.md
 
 #### Kafka
 
-- kafka 是LinkedIn开源的分布式消息系统
-- 基于 Pull 的模式处理消息消费，追求高吞吐量，一开始的目的就是为了日志手机和传输
-- 0.8版本开始支持复制，不支持事务，对消息的重复，丢失，错误没有严格要求，适合产生大量的互联网服务的数据收集业务
-- 特点
-  - 分布式
-  - 跨平台
-  - 伸缩性
-  - 实时性
-- 高性能的因素
-  - 顺序写，Page Cache
-  - 后台异步，主动Flush
-  - IO调度
-  - zero copy
-- 集群模式
-  - zookeeper 集群
+##### Kafka的主要特点
 
+Kafka是分布式发布-订阅消息系统。它最初由LinkedIn公司开发，之后成为Apache项目的一部分。Kafka是一个分布式的，可划分的，冗余备份的持久性的日志服
+
+用于处理活跃的流式数据。
+
+kafka的主要特点：
+
+同时为发布和订阅提供高吞吐量。据了解，Kafka每秒可以生产约25万消息（50 MB），每秒处理55万消息（110 MB）。
+
+可进行持久化操作。将消息持久化到磁盘，因此可用于批量消费，例如ETL，以及实时应用程序。通过将数据持久化到硬盘以及r
+
+止数据丢失。
+
+分布式系统，易于向外扩展。所有的producer、broker和consumer都会有多个，均为分布式的。无需停机即可扩展机器。
+
+消息被处理的状态是在consumer端维护，而不是由server端维护。当失败时能自动平衡。
+
+支持online和offline的场景。
+
+##### Kafka的架构
+
+Kafka的整体架构非常简单，是显式分布式架构，producer、broker（kafka）和consumer都可以有多个。Producer，consumer实现Kafka注册的接口，数据从prbroker，broker承担一个中间缓存和分发的作用。broker分发注册到系统中的consumer。broker的作用类似于缓存，即活跃的数据和离线处理系统之间的缓存。客器端的通信，是基于简单，高性能，且与编程语言无关的TCP协议。
+
+- 基本概念
+  - Topic：特指Kafka处理的消息源（feeds of messages）的不同分类。
+  - Partition：Topic物理上的分组，一个topic可以分为多个partition，每个partition是一个有序的队列。partition中的每条消息都会被分序的id（offset）。
+  - Message：消息，是通信的基本单位，每个producer可以向一个topic（主题）发布一些消息。
+  - Producers：消息和数据生产者，向Kafka的一个topic发布消息的过程叫做producers。
+  - Consumers：消息和数据消费者，订阅topics并处理其发布的消息的过程叫做consumers。
+  - Broker：缓存代理，Kafka集群中的一台或多台服务器统称为broker。
+
+- 发送消息的流程
+  - Producer根据指定的partition方法（round-robin、hash等），将消息发布到指定topic的partition里面，kafka集群接收到Producer发过来的消息后，将其持久化到硬盘，并保留消息指定时长（可配置），而不关注消息是否被消费。
+  - Consumer从kafka集群pull数据，并控制获取消息的offset
+
+##### kafka的优秀设计
+
+接下来我们从kafka的吞吐量、负载均衡、消息拉取、扩展性来说一说kafka的优秀设计。
+
+高吞吐是kafka需要实现的核心目标之一，为此kafka做了以下一些设计：
+
+- 内存访问：直接使用 linux 文件系统的cache，来高效缓存数据，对数据进行读取和写入。
+- 数据磁盘持久化：消息不在内存中cache，直接写入到磁盘，充分利用磁盘的顺序读写性能。
+- zero-copy：减少IO操作步骤
+  - 采用linux Zero-Copy提高发送性能。传统的数据发送需要发送4次上下文切换，采用sendfile系统调用之后，数据直接在内核统上下文切换减少为2次。根据测试结果，可以提高60%的数据发送性能。Zero-Copy详细的技术细节可以参考：https://www.developerworks/linux/library/j-zerocopy/
+- 对消息的处理
+  - 支持数据批量发送
+
+#### elk
+
+- Kafka 高吞吐量核心实战-日志过滤（logstash）
+- Kafka 高吞吐量核心实战-日志持久化（elasticsearch）
+- Kafka 高吞吐量核心实战-日志可视化（Kibana）
+
+#### JPS
+
+- jps -v
