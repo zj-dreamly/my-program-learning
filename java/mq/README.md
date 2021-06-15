@@ -1,3 +1,8 @@
+项目已经迁移：
+RabbitMQ地址：https://github.com/zj-dreamly/imooc-architect-rabbitmq
+
+Kafka地址：https://github.com/zj-dreamly/imooc-architect-kafka
+
 ### 数据库建模工具
 
 - pdman
