@@ -1,8 +1,3 @@
-项目已经迁移：
-RabbitMQ地址：https://github.com/zj-dreamly/imooc-architect-rabbitmq
-
-Kafka地址：https://github.com/zj-dreamly/imooc-architect-kafka
-
 ### 数据库建模工具
 
 - pdman
@@ -200,9 +195,10 @@ Kafka地址：https://github.com/zj-dreamly/imooc-architect-kafka
 
 ### MQ
 
-#### RabbitMQ
+示例项目已经迁移：
 
-https://github.com/zj-dreamly/my-program-learning/blob/master/my-work-doc/mq/rabbitmq%E5%AD%A6%E4%B9%A0.md
+- RabbitMQ 地址：https://github.com/zj-dreamly/imooc-architect-rabbitmq
+- Kafka 地址：https://github.com/zj-dreamly/imooc-architect-kafka
 
 #### Kafka
 
@@ -255,12 +251,29 @@ Kafka的整体架构非常简单，是显式分布式架构，producer、broker�
 - 对消息的处理
   - 支持数据批量发送
 
-#### elk
+### elk
 
 - Kafka 高吞吐量核心实战-日志过滤（logstash）
 - Kafka 高吞吐量核心实战-日志持久化（elasticsearch）
 - Kafka 高吞吐量核心实战-日志可视化（Kibana）
 
-#### JPS
+### JPS
 
 - jps -v
+
+### Spring 手动控制事务
+
+#### 获取事务
+
+- PlatformTransactionManager
+- TransactionDefinition
+
+- PlatformTransactionManager#getTransaction
+
+#### 提交事务
+
+- PlatformTransactionManager#commit
+
+#### 回滚事务
+
+- PlatformTransactionManager#rollback
