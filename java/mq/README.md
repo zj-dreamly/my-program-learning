@@ -263,6 +263,8 @@ Kafka的整体架构非常简单，是显式分布式架构，producer、broker�
 
 ### Spring 手动控制事务
 
+> Spring的自动提交事务在开启事务的方法结束后就提交
+
 #### 获取事务
 
 - PlatformTransactionManager
@@ -277,3 +279,157 @@ Kafka的整体架构非常简单，是显式分布式架构，producer、broker�
 #### 回滚事务
 
 - PlatformTransactionManager#rollback
+
+### 分布式锁
+
+#### 数据库分布式锁
+
+- select...for update
+
+#### redis分布式锁
+
+- 加锁
+  - SET resource_name my_random_value NX PX 30000
+    - resource_name：资源名称，可根据不同的业务区分不同的锁
+    - my_random_value ：随机值，每个线程的随机值都不同，用于释放锁的校验
+    - NX：key 不存在的时候设置成功，key 存在则设置不成功
+    - PX：自动失效时间，出现异常情况，锁可以过期释放
+
+- 释放锁
+  - 采用 Redis的 delete 命令
+  - 释放锁时校验之前设置的随机数，相同才能释放
+  - 释放锁需要LUA脚本
+
+> 可直接使用 Redisson 提供的分布式锁：Redisson.getLock
+
+#### zookeeper分布式锁
+
+- 利用 Zookeeper 的瞬时有序节点的特性
+
+- 多线程并发创建瞬时节点时，得到有序的序列
+- 序号最小的线程获得锁
+- 其他的线程则监听自己序号的前一个序号
+- 前一个线程执行完成，删除自己序号的节点
+- 下一个序号的线程得到通知，继续执行
+
+> 可直接使用 curator 提供的分布式锁：InterProcessMutex.acquire
+
+### 读写分离
+
+### 分库分表
+
+#### 模式
+
+- 中间层代理（例如：MyCat）
+- 客户端模式（sharding-jdbc）
+
+#### 数据切片
+
+- 垂直切分
+  - 按照业务去划分数据库
+  - 不同业务之间，禁止使用跨库 join 联查
+  - 优点
+    - 拆分后业务清晰，规则明确
+    - 系统之间容易扩展和整合
+    - 数据维护简单
+  - 缺点
+    - 业务表无法 join，只能通过接口调用，提升复杂度
+    - 跨库事务难以处理
+    - 某些业务数据过于庞大，仍然存在单体性能瓶颈
+- 水平切分
+  - 将一个表的数据按照某种规则分到不同的数据库
+  - 需要确定分片的规则
+  - 使用分片字段查询时，可确定实体库，其他字段查询，查询所有表
+  - 优点
+    - 解决了单库大数据，高并发的性能瓶颈
+    - 拆分规则封装好，对应用端几乎透明，开发人员无需关心拆分的细节
+    - 提高了系统稳定性和负载能力
+  - 缺点
+    - 拆分规则很难抽象
+    - 分片事务一致性难以解决
+    - 二次扩展，数据迁移，维护难度大
+
+#### mycat
+
+- server.xml
+  - 配置MyCat的用户名名，密码，权限，Schema
+  - 如同给MySql新建用户一样
+  - 客户端连接MyCat与连接MySql无异
+
+- schema.xml
+  - 配置 dataHost（节点主机）。包括读 host，写 host
+  - 配置 dataNode（数据节点），指定到具体数据库
+  - 配置 schema，表名，数据节点，分配规则
+  - datahost#balance：负载均衡类型，0不开启读写分离，1和2读写均匀分配，3读落在readHost上
+  - datahost#writeType：写请求类型：0落在第一个writeHost，1随机
+
+#### MySql主从
+
+- 主配置 log-bin，指定文件的名字
+- 主配置 server-id，默认为1
+- 从配置 server-id，与主不能重复
+- 主创建备份账户并授权 REPLICATION SLAVE
+- 主进行锁表 FLUSH TABLES WITH READ LOCK
+- 主找到log-bin位置 SHOW MASTER STATUS
+- 主备份数据
+  - mysqldump --all-databases --master-data > dbdump.db
+
+- 主进行解锁 UNLOCK TABLES
+- 从导入 dump 的数据 
+- 在从上设置主的配置
+  - CHANGE MASTER TO  MASTER_HOST='master_host_name',MASTER_USER='replication_user_name',MASTER_PASSWORD='replication_password',MASTER_LOG_FILE='recorded_log_file_name',MASTER_LOG_POS=recorded_log_position;
+
+- 从库执行  START SLAVE
+
+#### Sharding-Jdbc
+
+##### 逻辑表
+
+水平拆分的数据库（表）的相同逻辑和数据结构表的总称。例：订单数据根据主键尾数拆分为10张表，分别是`t_order_0`到`t_order_9`，他们的逻辑表名为`t_order`。
+
+##### 真实表
+
+在分片的数据库中真实存在的物理表。即上个示例中的`t_order_0`到`t_order_9`。
+
+##### 数据节点
+
+数据分片的最小单元。由数据源名称和数据表组成，例：`ds_0.t_order_0`。
+
+##### 绑定表
+
+指分片规则一致的主表和子表。例如：`t_order`表和`t_order_item`表，均按照`order_id`分片，则此两张表互为绑定表关系。绑定表之间的多表关联查询不会出现笛卡尔积关联，关联查询效率将大大提升。举例说明，如果SQL为：
+
+```sql
+SELECT i.* FROM t_order o JOIN t_order_item i ON o.order_id=i.order_id WHERE o.order_id in (10, 11);
+```
+
+在不配置绑定表关系时，假设分片键`order_id`将数值10路由至第0片，将数值11路由至第1片，那么路由后的SQL应该为4条，它们呈现为笛卡尔积：
+
+```sql
+SELECT i.* FROM t_order_0 o JOIN t_order_item_0 i ON o.order_id=i.order_id WHERE o.order_id in (10, 11);
+
+SELECT i.* FROM t_order_0 o JOIN t_order_item_1 i ON o.order_id=i.order_id WHERE o.order_id in (10, 11);
+
+SELECT i.* FROM t_order_1 o JOIN t_order_item_0 i ON o.order_id=i.order_id WHERE o.order_id in (10, 11);
+
+SELECT i.* FROM t_order_1 o JOIN t_order_item_1 i ON o.order_id=i.order_id WHERE o.order_id in (10, 11);
+```
+
+在配置绑定表关系后，路由的SQL应该为2条：
+
+```sql
+SELECT i.* FROM t_order_0 o JOIN t_order_item_0 i ON o.order_id=i.order_id WHERE o.order_id in (10, 11);
+
+SELECT i.* FROM t_order_1 o JOIN t_order_item_1 i ON o.order_id=i.order_id WHERE o.order_id in (10, 11);
+```
+
+其中`t_order`在FROM的最左侧，ShardingSphere将会以它作为整个绑定表的主表。 所有路由计算将会只使用主表的策略，那么`t_order_item`表的分片计算将会使用`t_order`的条件。故绑定表之间的分区键要完全相同。
+
+##### 广播表
+
+指所有的分片数据源中都存在的表，表结构和表中的数据在每个数据库中均完全一致。适用于数据量不大且需要与海量数据的表进行关联查询的场景，例如：字典表。
+
+##### 逻辑索引
+
+某些数据库（如：PostgreSQL）不允许同一个库存在名称相同索引，某些数据库（如：MySQL）则允许只要同一个表中不存在名称相同的索引即可。 逻辑索引用于同一个库不允许出现相同索引名称的分表场景，需要将同库不同表的索引名称改写为`索引名 + 表名`，改写之前的索引名称成为逻辑索引。
+
