@@ -471,3 +471,36 @@ SELECT i.* FROM t_order_1 o JOIN t_order_item_1 i ON o.order_id=i.order_id WHERE
 - 将本事务外操作，记录在消息表
 
 ##### 基于本地消息表最终一致性方案
+
+#### 幂等性
+
+- 核心思想：通过唯一的业务单号保证幂等性
+- 实现
+  - 非并发，查询业务单号是否操作过，没有则执行
+  - 并发下，整个操作过程加锁
+- select 和 delete 操作天然幂等
+- update 更新操作通过乐观锁实现幂等性
+- insert 操作，此时没有业务单号，通过 token 保证幂等
+- 混合操作：有业务单号使用分布式锁，没有通过 token 保证幂等性，后台生成 token 返回前端，前端提交数据，根据token获取分布式锁，获取成功执行操作，获取失败不执行操作
+
+> 举例用户下订单操作，后端生成下单操作 token并存储到 redis 中，前端提交下单数据，先根据 token 获取分布式锁，之后查询 redis 是否有下单操作 token，如果有就完成下单，如果没有就不操作，也就是在下单页面只能完成一次下单
+
+------
+
+
+
+#### LUA
+
+- Redis 内置 lua 解释器，执行过程原子性，脚本预编译
+- 嵌入式开发
+
+#### LUA&Redis
+
+- 预加载：script load ""
+- 执行：evalsha "sha" key1 val1
+- 是否存在该脚本：script exists ""
+- 脚本清除：script flush
+
+#### MicroService
+
+- CAP：一致性，可用性，分区容错性 
