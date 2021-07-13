@@ -29,6 +29,7 @@
         <module>zookeeper</module>
         <module>spring-thinking</module>
         <module>mq</module>
+        <module>algorithm</module>
     </modules>
 
 </project>
