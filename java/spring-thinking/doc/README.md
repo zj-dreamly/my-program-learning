@@ -1151,6 +1151,681 @@ Spring XML 扩展
   - org.springframework.beans.factory.config.YamlMapFactoryBean
   - org.springframework.beans.factory.config.YamlPropertiesFactoryBean
 
+## 十一、Spring 资源管理
+
+### 为什么 Spring 不使用 Java 标准资源管理，而选择重新发明轮子？
+
+- Java 标准资源管理强大，然而扩展复杂，资源存储方式并不统一
+- Spring 要自立门户（重要的话，要讲三遍） 
+- Spring “抄”、“超” 和 “潮”
+
+### Java 标准资源管理
+
+| 职责         | 说明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| 面向资源     | 文件系统、artifact（jar、war、ear 文件）以及远程资源（HTTP、FTP 等） |
+| API 整合     | java.lang.ClassLoader#getResource、java.io.File 或 java.net.URL |
+| 资源定位     | java.net.URL 或 java.net.URI                                 |
+| 面向流式存储 | java.net.URLConnection                                       |
+| 协议扩展     | java.net.URLStreamHandler 或 java.net.URLStreamHandlerFactory |
+
+### Java URL 协议扩展
+
+1. 基于 java.net.URLStreamHandlerFactory
+
+2. 基于 java.net.URLStreamHandler
+
+| 协议   | 实现类                              |
+| ------ | ----------------------------------- |
+| file   | sun.net.www.protocol.file.Handler   |
+| ftp    | sun.net.www.protocol.ftp.Handler    |
+| http   | sun.net.www.protocol.http.Handler   |
+| https  | sun.net.www.protocol.https.Handler  |
+| jar    | sun.net.www.protocol.jar.Handler    |
+| mailto | sun.net.www.protocol.mailto.Handler |
+| netdoc | sun.net.www.protocol.netdoc.Handler |
+
+| **实现类命名规则** | **说明**                                                     |
+| ------------------ | ------------------------------------------------------------ |
+| 默认               | sun.net.www.protocol.${protocol}.Handler                     |
+| 自定义             | 通过 Java Properties java.protocol.handler.pkgs 指定实现类包名，实现类名必须为“Handler”。如果存在多包名指定，通过分隔符 “\|” |
+
+### Spring 资源接口
+
+#### 资源接口
+
+| **类型**   | **接口**                                            |
+| ---------- | --------------------------------------------------- |
+| 输入流     | org.springframework.core.io.InputStreamSource       |
+| 只读资源   | org.springframework.core.io.Resource                |
+| 可写资源   | org.springframework.core.io.WritableResource        |
+| 编码资源   | org.springframework.core.io.support.EncodedResource |
+| 上下文资源 | org.springframework.core.io.ContextResource         |
+
+### Spring 内建 Resource 实现
+
+#### 内建实现
+
+| 资源来源       | 资源协议       | 实现类                                                       |
+| -------------- | -------------- | ------------------------------------------------------------ |
+| Bean 定义      | 无             | org.springframework.beans.factory.support.BeanDefinitionResource |
+| 数组           | 无             | org.springframework.core.io.ByteArrayResource                |
+| 类路径         | classpath:/    | org.springframework.core.io.ClassPathResource                |
+| 文件系统       | file:/         | org.springframework.core.io.FileSystemResource               |
+| URL            | URL 支持的协议 | org.springframework.core.io.UrlResource                      |
+| ServletContext | 无             | org.springframework.web.context.support.ServletContextResource |
+
+### Spring Resource 接口扩展
+
+- 可写资源接口
+  - org.springframework.core.io.WritableResource
+    - org.springframework.core.io.FileSystemResource
+    - org.springframework.core.io.FileUrlResource（@since 5.0.2）
+    - org.springframework.core.io.PathResource（@since 4.0 & @Deprecated）
+
+- 编码资源接口
+  - org.springframework.core.io.support.EncodedResource
+
+### Spring 资源加载器
+
+#### Resource 加载器
+
+- org.springframework.core.io.ResourceLoader
+  - org.springframework.core.io.DefaultResourceLoader
+    - org.springframework.core.io.FileSystemResourceLoader
+    - org.springframework.core.io.ClassRelativeResourceLoader
+    - org.springframework.context.support.AbstractApplicationContext
+
+### Spring 通配路径资源加载器
+
+- 通配路径 ResourceLoader
+
+  - org.springframework.core.io.support.ResourcePatternResolver
+
+  - org.springframework.core.io.support.PathMatchingResourcePatternResolver
+
+- 路径匹配器
+
+  - org.springframework.util.PathMatcher
+
+  - Ant 模式匹配实现 - org.springframework.util.AntPathMatcher
+
+- 实现 org.springframework.util.PathMatcher
+- 重置 PathMatcher 
+  - PathMatchingResourcePatternResolver#setPathMatcher
+
+### 依赖注入 Spring Resource
+
+#### 基于 @Value 实现
+
+```java
+@Value(“classpath:/...”) 
+private Resource resource;
+```
+
+### 依赖注入 ResourceLoader
+
+- 方法一：实现 ResourceLoaderAware 回调
+- 方法二：@Autowired 注入 ResourceLoader
+- 方法三：注入 ApplicationContext 作为 ResourceLoader
+
+## 十二、Spring国际化
+
+### Spring 国际化使用场景
+
+- 普通国际化文案
+- Bean Validation 校验国际化文案
+- Web 站点页面渲染
+- Web MVC 错误消息提示
+
+### Spring 国际化接口
+
+- 核心接口
+  - org.springframework.context.MessageSource
+- 主要概念
+  - 文案模板编码（code） 
+  - 文案模板参数（args）  
+  - 区域（Locale）
+
+### 层次性 MessageSource
+
+- Spring 层次性接口回顾
+  - org.springframework.beans.factory.HierarchicalBeanFactory
+  - org.springframework.context.ApplicationContext
+  - org.springframework.beans.factory.config.BeanDefinition
+- Spring 层次性国际化接口
+  - org.springframework.context.HierarchicalMessageSource
+
+### Java 国际化标准实现
+
+- 核心接口
+  - 抽象实现 - java.util.ResourceBundle
+  - Properties 资源实现 - java.util.PropertyResourceBundle
+  - 例举实现 - java.util.ListResourceBundle
+
+- ResourceBundle 核心特性
+  - Key-Value 设计
+  - 层次性设计
+  - 缓存设计
+  - 字符编码控制 - java.util.ResourceBundle.Control（@since 1.6） 
+  - Control SPI 扩展 - java.util.spi.ResourceBundleControlProvider（@since 1.8）
+
+### Java 文本格式化
+
+- 核心接口
+
+  - java.text.MessageFormat
+
+- 基本用法
+
+  - 设置消息格式模式- new MessageFormat(...)
+
+  - 格式化 - format(new Object[]{...})
+
+- 消息格式模式
+
+  - 格式元素：{ArgumentIndex (,FormatType,(FormatStyle))}
+
+  - FormatType：消息格式类型，可选项，每种类型在 number、date、time 和 choice 类型选其一
+
+  - FormatStyle：消息格式风格，可选项，包括：short、medium、long、full、integer、currency、percent
+
+- 高级特性
+  - 重置消息格式模式
+  - 重置 java.util.Locale
+  - 重置 java.text.Format
+
+### MessageSource 开箱即用实现
+
+- 基于 ResourceBundle + MessageFormat 组合 MessageSource 实现
+  - org.springframework.context.support.ResourceBundleMessageSource
+- 可重载 Properties + MessageFormat 组合 MessageSource 实现
+  - org.springframework.context.support.ReloadableResourceBundleMessageSource
+
+### MessageSource 內建依赖
+
+- MessageSource 內建 Bean 可能来源
+  - 预注册 Bean 名称为：“messageSource”，类型为：MessageSource Bean
+  - 默认內建实现 - DelegatingMessageSource
+    - 层次性查找 MessageSource 对象
+
+## 十三、Spring 校验
+
+### Spring 校验使用场景
+
+- Spring 常规校验（Validator） 
+- Spring 数据绑定（DataBinder） 
+- Spring Web 参数绑定（WebDataBinder） 
+- Spring Web MVC / Spring WebFlux 处理方法参数校验
+
+### Validator 接口设计
+
+- 接口职责
+
+  - Spring 内部校验器接口，通过编程的方式校验目标对象
+
+- 核心方法
+
+  - supports(Class)：校验目标类能否校验
+
+  - validate(Object,Errors)：校验目标对象，并将校验失败的内容输出至 Errors 对象
+
+- 配套组件
+
+  - 错误收集器：org.springframework.validation.Errors
+
+  - Validator 工具类：org.springframework.validation.ValidationUtils
+
+### Errors 接口设计
+
+- 接口职责
+
+  - 数据绑定和校验错误收集接口，与 Java Bean 和其属性有强关联性
+
+- 核心方法
+
+  - reject 方法（重载）：收集错误文案
+
+  - rejectValue 方法（重载）：收集对象字段中的错误文案
+
+- 配套组件
+
+  - Java Bean 错误描述：org.springframework.validation.ObjectError
+
+  - Java Bean 属性错误描述：org.springframework.validation.FieldError
+
+### Errors 文案来源
+
+- Errors 文案生成步骤
+  - 选择 Errors 实现（如：org.springframework.validation.BeanPropertyBindingResult） 
+  - 调用 reject 或 rejectValue 方法
+  - 获取 Errors 对象中 ObjectError 或 FieldError
+  - 将 ObjectError 或 FieldError 中的 code 和 args，关联 MessageSource 实现（如：ResourceBundleMessageSource）
+
+### 自定义 Validator
+
+- 实现 org.springframework.validation.Validator 接口
+  - 实现 supports 方法
+  - 实现 validate 方法
+    - 通过 Errors 对象收集错误
+      - ObjectError：对象（Bean）错误：
+      - FieldError：对象（Bean）属性（Property）错误
+    - 通过 ObjectError 和 FieldError 关联 MessageSource 实现获取最终文案
+
+### Validator 的救赎
+
+- Bean Validation 与 Validator 适配
+  - 核心组件 - org.springframework.validation.beanvalidation.LocalValidatorFactoryBean
+  - 依赖 Bean Validation - JSR-303 or JSR-349 provider
+  - Bean 方法参数校验 - org.springframework.validation.beanvalidation.MethodValidationPostProcessor
+
+## 十四、Spring 数据绑定
+
+### Spring 数据绑定使用场景
+
+- Spring BeanDefinition 到 Bean 实例创建
+- Spring 数据绑定（DataBinder） 
+- Spring Web 参数绑定（WebDataBinder）
+
+### Spring 数据绑定组件
+
+- 标准组件
+  - org.springframework.validation.DataBinder 
+- Web 组件
+  - org.springframework.web.bind.WebDataBinder
+  - org.springframework.web.bind.ServletRequestDataBinder
+  - org.springframework.web.bind.support.WebRequestDataBinder
+  - org.springframework.web.bind.support.WebExchangeDataBinder（since 5.0）
+
+#### DataBinder 核心属性
+
+| 属性                 | 说明                           |
+| -------------------- | ------------------------------ |
+| target               | 关联目标 Bean                  |
+| objectName           | 目标 Bean 名称                 |
+| bindingResult        | 属性绑定结果                   |
+| typeConverter        | 类型转换器                     |
+| conversionService    | 类型转换服务                   |
+| messageCodesResolver | 校验错误文案 Code 处理器       |
+| validators           | 关联的 Bean Validator 实例集合 |
+
+#### DataBinder 绑定方法
+
+- bind(PropertyValues)：将 PropertyValues Key-Value 内容映射到关联 Bean（target）中的属性上
+  - 假设 PropertyValues 中包含“name = 小马哥”的键值对，同时 Bean 对象 User 中存在 name 属性，当 bind 方法执行时，User 对象中的 name 属性值将被绑定为“小马哥”。
+
+
+
+### Spring 数据绑定元数据
+
+#### DataBinder 元数据 - PropertyValues
+
+| 特征         | 说明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| 数据来源     | BeanDefinition，主要来源 XML 资源配置 BeanDefinition         |
+| 数据结构     | 由一个或多个 PropertyValue 组成                              |
+| 成员结构     | PropertyValue 包含属性名称，以及属性值（包括原始值、类型转换后的值） |
+| 常见实现     | MutablePropertyValues                                        |
+| Web 扩展实现 | ServletConfigPropertyValues、ServletRequestParameterPropertyValues |
+| 相关生命周期 | InstantiationAwareBeanPostProcessor#postProcessProperties    |
+
+### Spring 数据绑定控制参数
+
+#### DataBinder 绑定特殊场景分析
+
+- 当 PropertyValues 中包含名称 x 的 PropertyValue，目标对象 B 不存在 x 属性，当 bind 方法执行时，会发生什么？
+- 当 PropertyValues 中包含名称 x 的 PropertyValue，目标对象 B 中存在 x 属性，当 bind 方法执行时，如何避免 B 属性 x 不被绑定？
+- 当 PropertyValues 中包含名称 x.y 的 PropertyValue，目标对象 B 中存在 x 属性（嵌套 y 属性），当bind 方法执行时，会发生什么？
+
+#### DataBinder 绑定控制参数
+
+| 参数名称            | 说明                               |
+| ------------------- | ---------------------------------- |
+| ignoreUnknownFields | 是否忽略未知字段，默认值：true     |
+| ignoreInvalidFields | 是否忽略非法字段，默认值：false    |
+| autoGrowNestedPaths | 是否自动增加嵌套路径，默认值：true |
+| allowedFields       | 绑定字段白名单                     |
+| disallowedFields    | 绑定字段黑名单                     |
+| requiredFields      | 必须绑定字段                       |
+
+### BeanWrapper 的使用场景
+
+- BeanWrapper
+  - Spring 底层 JavaBeans 基础设施的中心化接口
+  - 通常不会直接使用，间接用于 BeanFactory 和 DataBinder
+  - 提供标准 JavaBeans 分析和操作，能够单独或批量存储 Java Bean 的属性（properties） 
+  - 支持嵌套属性路径（nested path） 
+  - 实现类 org.springframework.beans.BeanWrapperImpl
+
+### Spring 底层 Java Beans 替换实现 
+
+- JavaBeans 核心实现 - java.beans.BeanInfo
+  - 属性（Property） 
+    - java.beans.PropertyEditor
+  - 方法（Method） 
+  - 事件（Event） 
+  - 表达式（Expression） 
+- Spring 替代实现 - org.springframework.beans.BeanWrapper
+  - 属性（Property）
+    - java.beans.PropertyEditor
+  - 嵌套属性路径（nested path） 
+
+### 标准 JavaBeans 是如何操作属性的？
+
+| API                           | 说明                     |
+| ----------------------------- | ------------------------ |
+| java.beans.Introspector       | JavaBeans 内省 API       |
+| java.beans.BeanInfo           | JavaBeans 元信息 API     |
+| java.beans.BeanDescriptor     | JavaBeans 信息描述符     |
+| java.beans.PropertyDescriptor | JavaBeans 属性描述符     |
+| java.beans.MethodDescriptor   | JavaBeans 方法描述符     |
+| java.beans.EventSetDescriptor | JavaBeans 事件集合描述符 |
+
+### DataBinder 数据校验
+
+- DataBinder 与 BeanWrapper 
+  - bind 方法生成 BeanPropertyBindingResult
+  - BeanPropertyBindingResult 关联 BeanWrapper 
+
+## 十五、Spring 类型转换
+
+### Spring 类型转换的实现
+
+- 基于 JavaBeans 接口的类型转换实现
+  - 基于 java.beans.PropertyEditor 接口扩展 
+- Spring 3.0+ 通用类型转换实现
+
+### 使用场景
+
+#### 场景分析
+
+| **场景**           | **基于 JavaBeans 接口的类型转换实现** | **Spring 3.0+ 通用类型转换实现** |
+| ------------------ | ------------------------------------- | -------------------------------- |
+| 数据绑定           | YES                                   | YES                              |
+| BeanWrapper        | YES                                   | YES                              |
+| Bean 属性类型装换  | YES                                   | YES                              |
+| 外部化属性类型转换 | `NO`                                  | YES                              |
+
+### 基于 JavaBeans 接口的类型转换
+
+- 核心职责
+  - 将 String 类型的内容转化为目标类型的对象
+- 扩展原理
+  - Spring 框架将文本内容传递到 PropertyEditor 实现的 setAsText(String) 方法
+  - PropertyEditor#setAsText(String) 方法实现将 String 类型转化为目标类型的对象
+  - 将目标类型的对象传入 PropertyEditor#setValue(Object) 方法
+  - PropertyEditor#setValue(Object) 方法实现需要临时存储传入对象
+  - Spring 框架将通过 PropertyEditor#getValue() 获取类型转换后的对象
+
+### Spring 內建 PropertyEditor 扩展
+
+#### 內建扩展（org.springframework.beans.propertyeditors 包下）
+
+| **转换场景**        | **实现类**                                                   |
+| ------------------- | ------------------------------------------------------------ |
+| String -> Byte 数组 | org.springframework.beans.propertyeditors.ByteArrayPropertyEditor |
+| String -> Char      | org.springframework.beans.propertyeditors.CharacterEditor    |
+| String -> Char 数组 | org.springframework.beans.propertyeditors.CharArrayPropertyEditor |
+| String -> Charset   | org.springframework.beans.propertyeditors.CharsetEditor      |
+| String -> Class     | org.springframework.beans.propertyeditors.ClassEditor        |
+| String -> Currency  | org.springframework.beans.propertyeditors.CurrencyEditor     |
+
+### 自定义 PropertyEditor 扩展 
+
+- 扩展模式
+
+  - 扩展 java.beans.PropertyEditorSupport 类 
+
+- 实现 org.springframework.beans.PropertyEditorRegistrar
+
+  - 实现 registerCustomEditors(org.springframework.beans.PropertyEditorRegistry) 方法
+
+  - 将 PropertyEditorRegistrar 实现注册为 Spring Bean
+
+- 向 org.springframework.beans.PropertyEditorRegistry 注册自定义 PropertyEditor 实现
+
+  - 通用类型实现 registerCustomEditor(Class<?>, PropertyEditor)
+
+  - Java Bean 属性类型实现：registerCustomEditor(Class<?>, String, PropertyEditor)
+
+### Spring PropertyEditor 的设计缺陷
+
+- 违反职责单一原则
+  - java.beans.PropertyEditor 接口职责太多，除了类型转换，还包括 Java Beans 事件和 Java GUI 交互
+- java.beans.PropertyEditor 实现类型局限
+  - 来源类型只能为 java.lang.String 类型
+- java.beans.PropertyEditor 实现缺少类型安全
+  - 除了实现类命名可以表达语义，实现类无法感知目标转换类型
+
+### Spring 3 通用类型转换接口
+
+- 类型转换接口 - org.springframework.core.convert.converter.Converter<S,T>
+
+  - 泛型参数 S：来源类型，参数 T：目标类型 
+
+  - 核心方法：T convert(S)
+
+- 通用类型转换接口 - org.springframework.core.convert.converter.GenericConverter
+
+  - 核心方法：convert(Object,TypeDescriptor,TypeDescriptor)
+
+  - 配对类型：org.springframework.core.convert.converter.GenericConverter.ConvertiblePair
+
+  - 类型描述：org.springframework.core.convert.TypeDescriptor
+
+### Spring 內建类型转换器
+
+#### 內建扩展
+
+| **转换场景**         | **实现类所在包名（package）**                |
+| -------------------- | -------------------------------------------- |
+| 日期/时间相关        | org.springframework.format.datetime          |
+| Java 8 日期/时间相关 | org.springframework.format.datetime.standard |
+| 通用实现             | org.springframework.core.convert.support     |
+
+### Converter 接口的局限
+
+- 局限一：缺少 Source Type 和 Target Type 前置判断
+  - 应对：增加 org.springframework.core.convert.converter.ConditionalConverter 实现
+- 局限二：仅能转换单一的 Source Type 和 Target Type
+  - 应对：使用 org.springframework.core.convert.converter.GenericConverter 代替
+
+### GenericConverter 接口
+
+#### org.springframework.core.convert.converter.GenericConverter
+
+| **核心要素** | **说明**                                                     |
+| ------------ | ------------------------------------------------------------ |
+| 使用场景     | 用于“复合”类型转换场景，比如 Collection、Map、数组等         |
+| 转换范围     | Set<ConvertiblePair> getConvertibleTypes()                   |
+| 配对类型     | org.springframework.core.convert.converter.GenericConverter.ConvertiblePair |
+| 转换方法     | convert(Object,TypeDescriptor,TypeDescriptor)                |
+| 类型描述     | org.springframework.core.convert.TypeDescriptor              |
+
+### 优化 GenericConverter 接口
+
+- GenericConverter 局限性
+  - 缺少 Source Type 和 Target Type 前置判断
+  - 单一类型转换实现复杂
+- GenericConverter 优化接口 - ConditionalGenericConverter
+  - 复合类型转换：org.springframework.core.convert.converter.GenericConverter
+  - 类型条件判断：org.springframework.core.convert.converter.ConditionalConverter
+
+### 扩展 Spring 类型转换器
+
+- 实现转换器接口 
+  - org.springframework.core.convert.converter.Converter
+  - org.springframework.core.convert.converter.ConverterFactory
+  - org.springframework.core.convert.converter.GenericConverter
+- 注册转换器实现
+  - 通过 ConversionServiceFactoryBean Spring Bean
+  - 通过 org.springframework.core.convert.ConversionService API
+
+### 统一类型转换服务
+
+#### org.springframework.core.convert.ConversionService
+
+| **实现类型**                       | **说明**                                                     |
+| ---------------------------------- | ------------------------------------------------------------ |
+| GenericConversionService           | 通用 ConversionService 模板实现，不内置转化器实现            |
+| DefaultConversionService           | 基础 ConversionService 实现，内置常用转化器实现              |
+| FormattingConversionService        | 通用 Formatter + GenericConversionService 实现，不内置转化器和Formatter 实现 |
+| DefaultFormattingConversionService | DefaultConversionService + 格式化 实现（如：JSR-354 Money &Currency, JSR-310 Date-Time） |
+
+### ConversionService 作为依赖
+
+- 类型转换器底层接口 - org.springframework.beans.TypeConverter
+  - 起始版本：Spring 2.0
+  - 核心方法 - convertIfNecessary 重载方法
+  - 抽象实现 - org.springframework.beans.TypeConverterSupport
+  - 简单实现 - org.springframework.beans.SimpleTypeConverter
+
+- 类型转换器底层抽象实现 - org.springframework.beans.TypeConverterSupport 
+  - 实现接口 - org.springframework.beans.TypeConverter
+  - 扩展实现 - org.springframework.beans.PropertyEditorRegistrySupport
+  - 委派实现 - org.springframework.beans.TypeConverterDelegate
+
+- 类型转换器底层委派实现 - org.springframework.beans.TypeConverterDelegate
+  - 构造来源 - org.springframework.beans.AbstractNestablePropertyAccessor 实现org.springframework.beans.BeanWrapperImpl
+  - 依赖 - java.beans.PropertyEditor 实现
+    - 默认內建实现 - PropertyEditorRegistrySupport#registerDefaultEditors 
+  - 可选依赖 - org.springframework.core.convert.ConversionService 实现
+
+## 十六、Spring 泛型处理
+
+### Java 泛型基础
+
+- 泛型类型
+
+  - 泛型类型是在类型上参数化的泛型类或接口 
+
+- 泛型使用场景
+
+  - 编译时强类型检查
+
+  - 避免类型强转
+
+  - 实现通用算法
+
+- 泛型类型擦写
+  - 泛型被引入到 Java 语言中，以便在编译时提供更严格的类型检查并支持泛型编程。类型擦除确保不会为参数化类型创建新类；因此，泛型不会产生运行时开销。为了实现泛型，编译器将类型擦除应用于： 
+    - 将泛型类型中的所有类型参数替换为其边界，如果类型参数是无边界的，则将其替换为“Object”。因此，生成的字节码只包含普通类、接口和方法。
+    - 必要时插入类型转换以保持类型安全。
+    - 生成桥方法以保留扩展泛型类型中的多态性
+
+### Java 5 类型接口
+
+#### Java 5 类型接口 - java.lang.reflect.Type
+
+| **派生类或接口**                    | **说明**                              |
+| ----------------------------------- | ------------------------------------- |
+| java.lang.Class                     | Java 类 API，如 java.lang.String      |
+| java.lang.reflect.GenericArrayType  | 泛型数组类型                          |
+| java.lang.reflect.ParameterizedType | 泛型参数类型                          |
+| java.lang.reflect.TypeVariable      | 泛型类型变量，如 Collection<E> 中的 E |
+| java.lang.reflect.WildcardType      | 泛型通配类型                          |
+
+#### Java 泛型反射 API
+
+| **类型**                         | **API**                                |
+| -------------------------------- | -------------------------------------- |
+| 泛型信息（Generics Info）        | java.lang.Class#getGenericInfo()       |
+| 泛型参数（Parameters）           | java.lang.reflect.ParameterizedType    |
+| 泛型父类（Super Classes）        | java.lang.Class#getGenericSuperclass() |
+| 泛型接口（Interfaces）           | java.lang.Class#getGenericInterfaces() |
+| 泛型声明（Generics Declaration） | java.lang.reflect.GenericDeclaration   |
+
+### Spring 泛型类型辅助类
+
+#### 核心 API - org.springframework.core.GenericTypeResolver
+
+- 版本支持：[2.5.2 , )
+
+- 处理类型相关（Type）相关方法
+
+  - resolveReturnType
+
+  - resolveType
+
+- 处理泛型参数类型（ParameterizedType）相关方法
+
+  - resolveReturnTypeArgument
+
+  - resolveTypeArgument
+
+  - resolveTypeArguments
+
+- 处理泛型类型变量（TypeVariable）相关方法
+
+  - getTypeVariableMap
+
+#### 核心 API - org.springframework.core.GenericCollectionTypeResolver
+
+- 版本支持：[2.0 , 4.3]
+
+- 替换实现：org.springframework.core.ResolvableType
+
+- 处理 Collection 相关
+
+  - getCollection*Type
+
+- 处理 Map 相关
+
+  - getMapKey*Type
+
+  - getMapValue*Type
+
+### Spring 方法参数封装
+
+#### 核心 API - org.springframework.core.MethodParameter
+
+- 起始版本：[2.0 , )
+- 元信息
+  - 关联的方法 - Method
+  - 关联的构造器 - Constructor
+  - 构造器或方法参数索引 - parameterIndex
+  - 构造器或方法参数类型 - parameterType
+  - 构造器或方法参数泛型类型 - genericParameterType
+  - 构造器或方法参数参数名称 - parameterName
+  - 所在的类 - containingClass
+
+### Spring 4.0 泛型优化实现 - ResolvableType
+
+#### 核心 API - org.springframework.core.ResolvableType
+
+- 起始版本：[4.0 , )
+- 扮演角色：GenericTypeResolver 和 GenericCollectionTypeResolver 替代者
+- 工厂方法：for* 方法
+- 转换方法：as* 方法
+- 处理方法：resolve* 方法
+
+### ResolvableType 的局限性
+
+- 局限一：ResolvableType 无法处理泛型擦写
+- 局限二：ResolvableType 无法处理非具体化的 ParameterizedType
+
+## 十七、Spring 事件
+
+​	Java 事件/监听器编程模型
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1311,3 +1986,125 @@ BeanFactory 的默认实现为 DefaultListableBeanFactory，其中 Bean生命周
 - 嵌套元素支持较弱：通常需要使用方法递归或者其嵌套解析的方式处理嵌套（子）元素。 
 - XML 处理性能较差：Spring XML 基于 DOM Level 3 API 实现，该 API 便于理解，然而性能较差。
 - XML 框架移植性差：很难适配高性能和便利性的 XML 框架，如 JAXB。
+
+#### Spring 配置资源中有哪些常见类型？
+
+- XML 资源
+- Properties 资源
+- YAML 资源
+
+#### 请例举不同类型 Spring 配置资源？
+
+- XML 资源
+
+  - 普通 Bean Definition XML 配置资源 - *.xml
+
+  - Spring Schema 资源 - *.xsd
+
+- Properties 资源
+
+  - 普通 Properties 格式资源 - *.properties
+
+  - Spring Handler 实现类映射文件 - META-INF/spring.handlers
+
+  - Spring Schema 资源映射文件 - META-INF/spring.schemas
+
+- YAML 资源
+
+  - 普通 YAML 配置资源 - *.yaml 或 *.yml
+
+#### Java 标准资源管理扩展的步骤？
+
+- 简易实现
+
+  - 实现 URLStreamHandler 并放置在 sun.net.www.protocol.${protocol}.Handler 包下
+
+- 自定义实现
+
+  - 实现 URLStreamHandler 
+
+  - 添加 -Djava.protocol.handler.pkgs 启动参数，指向 URLStreamHandler 实现类的包下
+
+- 高级实现
+
+  - 实现 URLStreamHandlerFactory 并传递到 URL 之中
+
+#### Spring Boot 为什么要新建 MessageSource Bean？
+
+- AbstractApplicationContext 的实现决定了 MessageSource 內建实现
+- Spring Boot 通过外部化配置简化 MessageSource Bean 构建
+- Spring Boot 基于 Bean Validation 校验非常普遍
+
+#### Spring 国际化接口有哪些？
+
+- 核心接口 - MessageSource
+- 层次性接口 - org.springframework.context.HierarchicalMessageSource 
+
+#### Spring 有哪些 MessageSource 內建实现？
+
+- org.springframework.context.support.ResourceBundleMessageSource
+- org.springframework.context.support.ReloadableResourceBundleMessageSource
+- org.springframework.context.support.StaticMessageSource
+- org.springframework.context.support.DelegatingMessageSource
+
+#### 如何实现配置自动更新 MessageSource？
+
+- Java NIO 2：java.nio.file.WatchService
+- Java Concurrency : java.util.concurrent.ExecutorService
+- Spring：org.springframework.context.support.AbstractMessageSource
+
+#### Spring 校验接口是哪个？
+
+- org.springframework.validation.Validator
+
+#### Spring 有哪些校验核心组件？
+
+- 检验器：org.springframework.validation.Validator
+- 错误收集器：org.springframework.validation.Errors
+- Java Bean 错误描述：org.springframework.validation.ObjectError
+- Java Bean 属性错误描述：org.springframework.validation.FieldError 
+- Bean Validation 适配：org.springframework.validation.beanvalidation.LocalValidatorFactoryBean
+
+#### 请通过示例演示 Spring Bean 的校验？
+
+#### Spring 数据绑定 API 是什么？
+
+- org.springframework.validation.DataBinder
+
+#### BeanWrapper 与 JavaBeans 之间关系是？
+
+- Spring 底层 JavaBeans 基础设施的中心化接口
+
+#### DataBinder 是怎么完成属性类型转换的？
+
+#### Spring 类型转换实现有哪些？
+
+- 基于 JavaBeans PropertyEditor 接口实现
+- Spring 3.0+ 通用类型转换实现
+
+#### Spring 类型转换器接口有哪些？
+
+- 类型转换接口 - org.springframework.core.convert.converter.Converter
+- 通用类型转换接口 - org.springframework.core.convert.converter.GenericConverter
+- 类型条件接口 - org.springframework.core.convert.converter.ConditionalConverter
+- 综合类型转换接口 -org.springframework.core.convert.converter.ConditionalGenericConverter
+
+#### TypeDescriptor 是如何处理泛型？
+
+#### Java 泛型擦写发生在编译时还是运行时？
+
+- 运行时
+
+#### 请介绍 Java 5 Type 类型的派生类或接口？
+
+- java.lang.Class
+- java.lang.reflect.GenericArrayType
+- java.lang.reflect.ParameterizedType
+- java.lang.reflect.TypeVariable
+- java.lang.reflect.WildcardType
+
+#### 请说明 ResolvableType 的设计优势？
+
+- 简化 Java 5 Type API 开发，屏蔽复杂 API 的运用，如 ParameterizedType 
+- 不变性设计（Immutability） 
+- Fluent API 设计（Builder 模式），链式（流式）编程
