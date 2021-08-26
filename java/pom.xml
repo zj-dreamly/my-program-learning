@@ -28,7 +28,7 @@
         <module>skill</module>
         <module>zookeeper</module>
         <module>spring-thinking</module>
-        <module>mq</module>
+        <module>imooc-architect</module>
         <module>algorithm</module>
     </modules>
 
