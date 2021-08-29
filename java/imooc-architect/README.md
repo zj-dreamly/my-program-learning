@@ -282,6 +282,8 @@ Kafka的整体架构非常简单，是显式分布式架构，producer、broker�
 
 ### 分布式锁
 
+- 示例项目地址：https://github.com/zj-dreamly/imooc-distributelock
+
 #### 数据库分布式锁
 
 - select...for update
@@ -317,6 +319,8 @@ Kafka的整体架构非常简单，是显式分布式架构，producer、broker�
 ### 读写分离
 
 ### 分库分表
+
+- 示例项目地址：https://github.com/zj-dreamly/imooc-architect-mycat-sharding-jdbc
 
 #### 模式
 
