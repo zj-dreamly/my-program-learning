@@ -30,6 +30,7 @@
         <module>spring-thinking</module>
         <module>imooc-architect</module>
         <module>algorithm</module>
+        <module>interview</module>
     </modules>
 
 </project>
