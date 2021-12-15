@@ -1,6 +1,6 @@
 package com.atguigu.juc.objecthead;
 
-import org.openjdk.jol.info.ClassLayout;
+//import org.openjdk.jol.info.ClassLayout;
 
 /**
  * @auther zzyy
@@ -13,7 +13,7 @@ public class ObjectHeadDemo
         Object object = new Object();
 
         //引入了JOL，直接使用
-        System.out.println(ClassLayout.parseInstance(object).toPrintable());
+        //System.out.println(ClassLayout.parseInstance(object).toPrintable());
 
         //java5之前 只有重量级锁
         new Thread(() -> {
