@@ -33,6 +33,7 @@
         <module>interview</module>
         <module>jvm</module>
         <module>juc</module>
+        <module>redis</module>
     </modules>
 
 </project>
