@@ -303,6 +303,28 @@ Producer 的 send 方法本身支持内部重试，重试逻辑如下：
 
 ## 同步复制与异步复制
 
+- 同一组 Broker 有 Master-Slave 角色
+- 异步复制
+- 同步复制
+
 ## 高可用机制
 
+- Master-Slave 高可用
+- BrokerId
+- Master 读、写，Slave 只复制读
+- 当 Master 繁忙不可用时，可以自动切换到 Slave 读取消息
+- 生产环境一般是：同步双写，异步刷盘
+
 ## NameServer 协调者
+
+- 集群状态服务器
+- 部署相互独立，并无关联
+
+```java
+private final HashMap<String/* topic */, List<QueueData>> topicQueueTable;
+private final HashMap<String/* brokerName */, BrokerData> brokerAddrTable;
+private final HashMap<String/* clusterName */, Set<String/* brokerName */>> clusterAddrTable;
+private final HashMap<String/* brokerAddr */, BrokerLiveInfo> brokerLiveTable;
+private final HashMap<String/* brokerAddr */, List<String>/* Filter Server */> 
+```
+
