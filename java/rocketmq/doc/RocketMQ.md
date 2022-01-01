@@ -1,7 +1,3 @@
-
-
-
-
 # 整体介绍
 
 - RocketMQ 是一款分布式队列模型的消息中间件
@@ -327,4 +323,25 @@ private final HashMap<String/* clusterName */, Set<String/* brokerName */>> clus
 private final HashMap<String/* brokerAddr */, BrokerLiveInfo> brokerLiveTable;
 private final HashMap<String/* brokerAddr */, List<String>/* Filter Server */> 
 ```
+
+# RocketMQ 顺序消费的思想和设计
+
+- 顺序消费：指的是消息的消费顺序和生产顺序相同
+- 全局顺序：在某个 Topic 下，所有的消息都要保证顺序
+- 局部顺序：只要保证每一组消息被顺序消费即可
+
+# RocketMQ 消息过滤
+
+- tag
+- sql 表达式
+- filter server
+
+# 优化吞吐量
+
+- 提高 Consumer 处理能力，通过增加多个 Consumer 实例，或者增加同一个 Consumer 的内部线程并行度
+- 批量消费
+- topic 下的队列个数应该与 Consumer 数量契合
+- 生产者发送 oneway 消息
+- 多生产者同时发送消息
+- 文件系统使用 ext4，IO 调度算法使用 deadline 算法
 
