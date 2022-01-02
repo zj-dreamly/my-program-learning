@@ -13,6 +13,7 @@
 - 开源社区活跃，成熟度经过双十一考验
 
 > 官方文档：https://github.com/apache/rocketmq/tree/master/docs/cn
+> 代码示例：https://github.com/zj-dreamly/imooc-rocketmq
 
 # 基本概念
 
@@ -237,7 +238,7 @@ Producer 的 send 方法本身支持内部重试，重试逻辑如下：
 | pullInterval                 | 0                             | 拉消息间隔，由于是长轮询，所以为0，但是如果应用为了流控，也可以设置大于0的值，单位毫秒 |
 | consumeMessageBatchMaxSize   | 1                             | 批量消费，一次消费多少条消息                                 |
 | pullBatchSize                | 32                            | 批量拉消息，一次最多拉多少条                                 |
-
+> 一个Consumer机器可以消费处理多个MessageQueue，一个MessageQueue只能被一个相同ConsumerGroup中的同一个Consumer消费
 ## pushConsumer 集群消费模式
 
 - clustering 模式（默认）
