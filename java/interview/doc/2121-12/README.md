@@ -4,6 +4,10 @@
 
 [Kafka消息怎么保证顺序消费](https://www.cnblogs.com/-courage/p/15252760.html)
 
+[MVCC](https://www.cnblogs.com/xuwc/p/13873611.html)
+
+https://mp.weixin.qq.com/s/W07ZIW0GRtsrS5nuiy2z_A
+
 # 润和软件
 
 **Spring MVC 执行过程**
@@ -100,3 +104,6 @@ https://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html
 - String：String 的值是不可变的，这就导致每次对 String 的操作都会生成新的String对象，不仅效率低下，而且浪费大量优先的内存空间
 - StringBuffer：StringBuffer是可变类和线程安全的字符串操作类，任何对它指向的字符串的操作都不会产生新的对象，每个 StringBuffer对象都有一定的缓冲区容量，当字符串大小没有超过容量时，不会分配新的容量，当字符串大小超过容量时，会自动增加容量
 - StringBuilder：可变类，速度更快，线程不安全
+
+# 好特卖
+
