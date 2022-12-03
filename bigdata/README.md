@@ -96,3 +96,13 @@
 - 下载一个文件其实是获取文件的所有的 block 元数据，那么子集获取某些 block 应该成立
 - HDFS 支持 client 给出文件的 offset 并自定义连接哪些 blcck 的 DN 服务
 - 这个是支持计算层的分治、并行计算的核心
+
+## HDFS 解决方案
+
+- 单点故障
+  - 高可用方案：HA（High Available）
+  - 多个NN，主备切换
+- 压力过大，内存受限
+  - 联帮机制： Federation（元数据分片）
+  - 多个NN，管理不同的元数据
+- HADOOP 2.x 只支持HA的一主一备
