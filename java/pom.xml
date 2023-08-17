@@ -36,6 +36,7 @@
         <module>redis</module>
         <module>rocketmq</module>
         <module>kafka</module>
+        <module>util</module>
     </modules>
 
 </project>
