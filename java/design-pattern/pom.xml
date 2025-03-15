@@ -29,7 +29,7 @@
     <description>设计模式学习</description>
 
     <properties>
-        <guava.version>27.1-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <spring-jdbc.version>5.1.7.RELEASE</spring-jdbc.version>
         <spring-expression.version>5.1.7.RELEASE</spring-expression.version>
