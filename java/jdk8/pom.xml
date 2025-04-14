@@ -14,7 +14,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <assertj.version>3.8.0</assertj.version>
     </properties>
 
